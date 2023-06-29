@@ -1,16 +1,17 @@
-{ lib, config, pkgs, ... }: {
+{ lib, config, pkgs, ... }:
+{
   programs.starship = {
     enable = true;
     settings = {
-     format = ''$username$hostname$directory$git_branch$git_state$git_status$cmd_duration$line_break$python$character'';
+      format = ''$username$hostname$directory$git_branch$git_state$git_status$cmd_duration$line_break$python$character'';
 
       directory = {
         style = "blue";
       };
 
       character = {
-        success_symbol = "[❯](purple)";
-        error_symbol = "[❯](red)";
+        success_symbol = ''[ \(>∀<\) ](purple)'';
+        error_symbol = ''[ \(>Д<\) ](red)'';
         vimcmd_symbol = "[❮](green)";
       };
       

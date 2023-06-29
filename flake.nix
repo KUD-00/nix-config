@@ -63,6 +63,9 @@
 	  # system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [
+            # > Our main nixos configuration file <
+            ./nixos/configuration.nix
+
              # home-manager.nixosModules.home-manager
              #   {
              #     home-manager.users.kud = { ... }: {
@@ -74,8 +77,6 @@
              #       };
              #     };
              #   }
-            # > Our main nixos configuration file <
-            ./nixos/configuration.nix
           ];
         };
       };
@@ -85,11 +86,10 @@
       homeConfigurations = {
         "kud@Lain" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs nix-doom-emacs; };
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
-            ./home-manager/bash.nix
           ];
         };
       };

@@ -56,8 +56,8 @@
 
 
   hardware.opengl.extraPackages = with pkgs; [
-  rocm-opencl-icd
-  rocm-opencl-runtime
+    rocm-opencl-icd
+    rocm-opencl-runtime
   ];
   
   hardware.opengl.driSupport = true;
@@ -72,57 +72,47 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     initialPassword = "seki123";
-    packages = with pkgs; [
-      thunderbird
-      hyprland
-      swaybg
-      waybar
-      fcitx5-with-addons
-      wl-clipboard
-      rofi-wayland-unwrapped
-      grim
-      cinnamon.nemo-with-extensions
-      nerdfonts
-      imagemagick
-      docker
-      joshuto
-      font-awesome
-      indicator-sound-switcher
-      atuin
-      blueman
-      bluez
-    ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # basic apps
+    google-chrome
+    hyprland
+
+    # basic tools
+    fcitx5-with-addons
+    rofi-wayland-unwrapped
+    cinnamon.nemo-with-extensions
+    blueman
+    bluez
+
+    # fonts
+    nerdfonts
+    font-awesome
+
+    # basic dev
     wget
     git
     kitty
-    exa
-    bat
-    du-dust
-    duf
-    google-chrome
   ];
 
   programs.hyprland.enable = true;
-   
+
   fonts.fonts = with pkgs; [
-  noto-fonts
-  noto-fonts-cjk
-  noto-fonts-emoji
-  liberation_ttf
-  fira-code
-  fira-code-symbols
-  mplus-outline-fonts.githubRelease
-  dina-font
-  proggyfonts
-  nerdfonts
-  wqy_zenhei
-  font-awesome
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts.githubRelease
+    dina-font
+    proggyfonts
+    nerdfonts
+    wqy_zenhei
+    font-awesome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, nix-doom-emacs, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -9,10 +9,12 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
+    nix-doom-emacs.hmModule
 
     # You can also split up your configuration and import pieces of it here:
     ./bash.nix
     ./starship.nix
+    ./git.nix
   ];
 
   nixpkgs = {
@@ -41,20 +43,37 @@
     };
   };
 
-    home = {
-      username = "kud";
-      homeDirectory = "/home/kud";
-      packages = with pkgs; [
-        google-chrome
-        qq
-        fd
-	home-manager
-        # doom-emacs
-      ];
-      sessionVariables = {
-        MAKEFLAGES = "-j20";
-      };
+  home = {
+    username = "kud";
+    homeDirectory = "/home/kud";
+    packages = with pkgs; [
+      # apps
+      qq
+
+      # tools
+      swaybg
+      waybar
+      wl-clipboard
+      grim
+      indicator-sound-switcher
+
+      # cli
+      fd
+      imagemagick
+      joshuto
+      atuin
+      exa
+      bat
+      du-dust
+      duf
+
+      # dev
+      docker
+    ];
+    sessionVariables = {
+      MAKEFLAGES = "-j20";
     };
+  };
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
@@ -62,7 +81,11 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+
+  programs.doom-emacs = {
+    enable = true;
+    doomPrivateDir = ../config/doom.d;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

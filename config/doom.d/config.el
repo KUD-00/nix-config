@@ -40,15 +40,15 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+;; (setq org-directory "~/org/")
 
-(use-package wakatime-mode
-  :ensure t)
+;; (use-package wakatime-mode
+;;   :ensure t)
 
-(global-wakatime-mode)
+;; (global-wakatime-mode)
 
-(custom-set-variables '(wakatime-api-key "waka_77403130-5ce9-47ee-a1a2-efdda16a7803"))
-;; Whenever you reconfigure a package, make sure to wrap your config in an
+;; (custom-set-variables '(wakatime-api-key "waka_77403130-5ce9-47ee-a1a2-efdda16a7803"))
+;; ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
 ;;   (after! PACKAGE
