@@ -28,7 +28,20 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    inputMethod = {
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-rime
+        fcitx5-chinese-addons
+        fcitx5-gtk
+      ];
+    };
+  };
+
+  # programs.xwayland.enable = true;
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
@@ -51,7 +64,16 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
   hardware.bluetooth.enable = true;
 
 
@@ -82,11 +104,12 @@
     hyprland
 
     # basic tools
-    fcitx5-with-addons
+    fcitx5
     rofi-wayland-unwrapped
     cinnamon.nemo-with-extensions
     blueman
     bluez
+    qpwgraph
 
     # fonts
     nerdfonts
@@ -102,17 +125,18 @@
 
   fonts.fonts = with pkgs; [
     noto-fonts
+    source-han-sans
+    source-han-serif
+    source-code-pro
+    hack-font
+    jetbrains-mono
+
+    noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
-    proggyfonts
     nerdfonts
-    wqy_zenhei
     font-awesome
+    wqy_zenhei
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -124,6 +148,7 @@
   # };
 
   # List services that you want to enable:
+  # services.atuin.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -139,6 +164,7 @@
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
   # system.copySystemConfiguration = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nixpkgs.config.allowUnfree = true;
   # This value determines the NixOS release from which the default

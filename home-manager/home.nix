@@ -49,6 +49,7 @@
     packages = with pkgs; [
       # apps
       qq
+      steam
 
       # tools
       swaybg
@@ -58,6 +59,7 @@
       indicator-sound-switcher
 
       # cli
+      ripgrep
       fd
       imagemagick
       joshuto
@@ -66,12 +68,33 @@
       bat
       du-dust
       duf
+      gh
+      nvtop-amd
+      neofetch
+      zip
+      xz
+      unzip
+      jq
+      fzf
+      glow
+      glances
+      tldr
+      procs
+      httpie
+      curlie
 
       # dev
       docker
+      nodePackages.pnpm
+      yarn
     ];
     sessionVariables = {
       MAKEFLAGES = "-j20";
+      GTK_IM_MODULE = "fcitx";
+      QT_IM_MODULE = "fcitx";
+      SDL_IM_MODULE = "fcitx";
+      XMODIFIERS = "@im=fcitx";
+      QT_QPA_PLATFORM= "xcb";
     };
   };
 

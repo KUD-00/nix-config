@@ -11,7 +11,6 @@
         df = "duf";
         chat = "chatgpt";
         j = "joshuto";
-        cbp = "convert-blog-picture.sh";
         routine = "routine.sh";
         rocm = "sudo docker run \
     -it \
@@ -30,12 +29,18 @@
         gpush = "git push";
         gpull = "git pull";
         lsblk = "lsblk -f";
-        hm = "home-manager switch --flake .#kud@Lain --extra-experimental-features nix-command --extra-experimental-features flakes";
+        hm = "home-manager switch --flake .#kud@Lain";
         nb = "sudo nixos-rebuild switch --flake .#Lain";
+        update = "nix flake update; nb; hm";
+        ps = "procs";
+        cbp = "~/Developer/scripts/compress-blog-image.sh";
+        cache = "sudo nix-collect-garbage";
     };
 
     programs.bash.sessionVariables = {
         MAKEFLAGES = "-j20";
         HSA_OVERRIDE_GFX_VERSION = "10.3.0";
     };
+
+    # programs.bash.initExtra = "atuin init bash";
 }

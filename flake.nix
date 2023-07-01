@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -65,18 +65,6 @@
           modules = [
             # > Our main nixos configuration file <
             ./nixos/configuration.nix
-
-             # home-manager.nixosModules.home-manager
-             #   {
-             #     home-manager.users.kud = { ... }: {
-	     #       home.stateVersion = "23.05";
-             #       imports = [ nix-doom-emacs.hmModule ];
-             #       programs.doom-emacs = {
-             #         enable = true;
-             #         doomPrivateDir = ./config/doom.d; # Directory containing your config.el, init.el
-             #       };
-             #     };
-             #   }
           ];
         };
       };
