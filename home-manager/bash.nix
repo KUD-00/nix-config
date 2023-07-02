@@ -6,7 +6,7 @@
         tree = "exa -T -L";
         less = "bat";
         cat = "bat";
-        grep = "grep --color=auto";
+        grep = "grep -i --color=auto";
         du = "dust";
         df = "duf";
         chat = "chatgpt";
