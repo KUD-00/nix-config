@@ -28,6 +28,7 @@
         gcm = "git commit -m ";
         gpush = "git push";
         gpull = "git pull";
+        gs = "git status";
         lsblk = "lsblk -f";
         hm = "home-manager switch --flake .#kud@Lain";
         nb = "sudo nixos-rebuild switch --flake .#Lain";
@@ -35,6 +36,7 @@
         ps = "procs";
         cbp = "~/Developer/scripts/compress-blog-image.sh";
         cache = "sudo nix-collect-garbage";
+        suspend = "sudo systemctl suspend";
     };
 
     programs.bash.sessionVariables = {

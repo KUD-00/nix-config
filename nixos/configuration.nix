@@ -13,7 +13,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true; boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelParams = [ "radeon.cik_support=0" "amdgpu.cik_support=1" ];
 
   networking.hostName = "Lain"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -57,7 +56,8 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
+  # services.xserver.enable = true;
+  # services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -83,10 +83,16 @@
   };
   hardware.bluetooth.enable = true;
 
-
   hardware.opengl.extraPackages = with pkgs; [
     rocm-opencl-icd
     rocm-opencl-runtime
+    amdvlk
+  ];
+
+  # For 32 bit applications
+  # Only available on unstable
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
   ];
   
   hardware.opengl.driSupport = true;

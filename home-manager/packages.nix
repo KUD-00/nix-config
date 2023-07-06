@@ -47,6 +47,8 @@
       curlie
       playerctl
       gping
+      pciutils
+      busybox
 
       # dev
       docker
