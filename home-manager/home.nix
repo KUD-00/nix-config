@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, outputs, lib, config, pkgs, nix-doom-emacs, ... }: {
+{ inputs, outputs, lib, config, pkgs, pkgs-stable, nix-doom-emacs, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -16,6 +16,7 @@
     ./starship.nix
     ./git.nix
     ./packages.nix
+    ./packages-stable.nix
   ];
 
   nixpkgs = {

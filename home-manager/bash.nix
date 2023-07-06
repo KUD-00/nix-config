@@ -35,8 +35,9 @@
         update = "nix flake update; nb; hm";
         ps = "procs";
         cbp = "~/Developer/scripts/compress-blog-image.sh";
-        cache = "sudo nix-collect-garbage";
+        cache = "sudo nix-collect-garbage; sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d; sudo nix store gc --debug";
         suspend = "sudo systemctl suspend";
+        nix-history = "sudo nix profile history --profile /nix/var/nix/profiles/system";
     };
 
     programs.bash.sessionVariables = {

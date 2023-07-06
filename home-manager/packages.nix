@@ -6,9 +6,9 @@
       qq
       steam
       obs-studio
-      zoom-us
       vlc
       telegram-desktop
+      vscode
 
       # tools
       swaybg

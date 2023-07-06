@@ -8,6 +8,7 @@
     # at the same time. Here's an working example:
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.05";
@@ -22,7 +23,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-doom-emacs, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -74,7 +75,15 @@
       homeConfigurations = {
         "kud@Lain" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs nix-doom-emacs; };
+          extraSpecialArgs = {
+            inherit inputs outputs nixpkgs-stable nix-doom-emacs;
+
+            pkgs-stable = import nixpkgs-stable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+
+          };
           modules = [
             # > Our main home-manager configuration file <
             ./home-manager/home.nix
