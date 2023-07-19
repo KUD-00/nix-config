@@ -3,7 +3,7 @@
 
     programs.bash.shellAliases = {
         ls = "exa -lab --icons --git";
-        tree = "exa -T -L";
+        tree = "exa -I .git -T -L ";
         less = "bat";
         cat = "bat";
         grep = "grep -i --color=auto";
@@ -28,6 +28,7 @@
         gcm = "git commit -m ";
         gpush = "git push";
         gpull = "git pull";
+        gstat = "git status";
         gs = "git status";
         lsblk = "lsblk -f";
         hm = "home-manager switch --flake .#kud@Lain";

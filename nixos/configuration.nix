@@ -12,6 +12,8 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true; boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.loader.systemd-boot.configurationLimit = 10;
 
@@ -126,7 +128,6 @@
     hyprland
 
     # basic tools
-    fcitx5
     rofi-wayland-unwrapped
     cinnamon.nemo-with-extensions
     blueman
@@ -208,6 +209,7 @@
   # system.copySystemConfiguration = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nixpkgs.config.allowBroken = true;
   nixpkgs.config.allowUnfree = true;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

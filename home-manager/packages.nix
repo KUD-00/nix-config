@@ -9,6 +9,9 @@
       vlc
       telegram-desktop
       vscode
+      firefox
+      chromium
+      slack
 
       # tools
       swaybg
@@ -48,11 +51,23 @@
       playerctl
       gping
       pciutils
-      busybox
+      unrar
 
       # dev
       docker
+      jetbrains-toolbox
+
+      ## C
+      gccgo13
+
+      ## web
       nodePackages.pnpm
+      nodePackages_latest.vercel
       yarn
+      nodejs
+
+      ## rust
+      rustc
+      cargo
   ];
 }
