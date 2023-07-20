@@ -44,6 +44,8 @@
     programs.bash.sessionVariables = {
         MAKEFLAGES = "-j20";
         HSA_OVERRIDE_GFX_VERSION = "10.3.0";
+        EDITOR = "nvim";
+        NIX_BUILD_CORES = "20";
     };
 
     # programs.bash.initExtra = "atuin init bash";

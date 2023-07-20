@@ -52,6 +52,9 @@
       gping
       pciutils
       unrar
+      lazygit
+      tree-sitter
+
 
       # dev
       docker
