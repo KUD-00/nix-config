@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs-stable; [
+    qq
     zoom-us
-    google-chrome
   ];
 }

@@ -15,7 +15,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   nix.gc = {
     automatic = true;
@@ -183,6 +183,10 @@
     wqy_zenhei
   ];
 
+  virtualisation = {
+    waydroid.enable = true;
+    lxd.enable = true;
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

@@ -3,15 +3,13 @@
 {
   home.packages = with pkgs; [
       # apps
-      qq
       steam
       obs-studio
       vlc
-      telegram-desktop
       vscode
       firefox
-      chromium
       slack
+      google-chrome
 
       # tools
       swaybg
@@ -40,6 +38,7 @@
       zip
       xz
       unzip
+      p7zip
       jq
       fzf
       glow
@@ -54,7 +53,18 @@
       unrar
       lazygit
       tree-sitter
+      gdb
 
+      ## For Docker-OSX
+      qemu
+      libvirt
+      dnsmasq
+      virt-manager
+      bridge-utils
+      flex
+      bison
+      iptables
+      edk2
 
       # dev
       docker
