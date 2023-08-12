@@ -21,6 +21,7 @@
       indicator-sound-switcher
       slurp
       fcitx5-chinese-addons
+      syncthing
 
       # cli
       ripgrep

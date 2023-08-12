@@ -167,7 +167,7 @@
 
   programs.hyprland.enable = true;
 
-  fonts.fonts = with pkgs; [
+  fonts.packages= with pkgs; [
     noto-fonts
     source-han-sans
     source-han-serif
