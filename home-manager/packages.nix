@@ -1,8 +1,19 @@
 { config, lib, pkgs, ... }:
 
+let
+  aagl-gtk-on-nix = import (builtins.fetchTarball {
+      url = "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz";
+      sha256 = "1bkycmk27nykiah9qicnh3q79zpaw00gsz2sw5hf554451swr6h0";
+    }
+  );
+in
 {
   home.packages = with pkgs; [
-      # apps
+      aagl-gtk-on-nix.anime-game-launcher
+      aagl-gtk-on-nix.anime-borb-launcher
+      aagl-gtk-on-nix.honkers-railway-launcher
+      aagl-gtk-on-nix.honkers-launcher
+# apps
       steam
       obs-studio
       vlc
@@ -11,7 +22,7 @@
       slack
       google-chrome
 
-      # tools
+# tools
       swaybg
       waybar
       wl-clipboard
@@ -23,13 +34,13 @@
       fcitx5-chinese-addons
       syncthing
 
-      # cli
+# cli
       ripgrep
       fd
       imagemagick
       joshuto
       atuin
-      exa
+      eza
       bat
       du-dust
       duf
@@ -56,7 +67,7 @@
       tree-sitter
       gdb
 
-      ## For Docker-OSX
+## For Docker-OSX
       qemu
       libvirt
       dnsmasq
@@ -67,21 +78,21 @@
       iptables
       edk2
 
-      # dev
+# dev
       docker
       jetbrains-toolbox
 
-      ## C
+## C
       gccgo13
 
-      ## web
+## web
       nodePackages.pnpm
       nodePackages_latest.vercel
       yarn
       nodejs
 
-      ## rust
+## rust
       rustc
       cargo
-  ];
+      ];
 }

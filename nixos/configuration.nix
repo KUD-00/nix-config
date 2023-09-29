@@ -16,6 +16,11 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.loader.systemd-boot.configurationLimit = 5;
+  
+  fileSystems."/data" = {
+    device = "/dev/disk/by-uuid/f27a2b4c-6e7b-4ad0-86d0-6d79f1799a64";
+    fsType = "ext4";
+  };
 
   nix.gc = {
     automatic = true;
@@ -24,9 +29,31 @@
   };
 
   nix.settings.auto-optimise-store = true;
+  nix.settings.trusted-users = [ "root" "kud" ];
+
+  nix.settings = {
+    substituters = [ "https://ezkea.cachix.org" ];
+    trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
+  };
 
   networking.hostName = "Lain"; # Define your hostname.
-  # Pick only one of the below networking options.
+
+    networking.extraHosts = ''
+    0.0.0.0 public-data-api.mihoyo.com
+    0.0.0.0 overseauspider.yuanshen.com
+    0.0.0.0 log-upload-os.hoyoverse.com
+
+    0.0.0.0 log-upload.mihoyo.com
+    0.0.0.0 uspider.yuanshen.com
+    0.0.0.0 sg-public-data-api.hoyoverse.com
+
+    0.0.0.0 prd-lender.cdp.internal.unity3d.com
+    0.0.0.0 thind-prd-knob.data.ie.unity3d.com
+    0.0.0.0 thind-gke-usc.prd.data.corp.unity3d.com
+    0.0.0.0 cdp.cloud.unity3d.com
+    0.0.0.0 remote-config-proxy-prd.uca.cloud.unity3d.com
+    '';
+# Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
@@ -187,6 +214,7 @@
     waydroid.enable = true;
     lxd.enable = true;
   };
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
