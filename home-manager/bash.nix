@@ -3,8 +3,8 @@
                 enable = true;
 
                 shellAliases = {
-                        ls = "exa -lab --icons --git";
-                        tree = "exa -I .git -T -L ";
+                        ls = "eza --long --icons --hyperlink --classify --all --bytes --header --modified --mounts --git";
+                        tree = "eza -I .git -T -L ";
                         less = "bat";
                         cat = "bat";
                         grep = "grep -i --color=auto";
@@ -40,6 +40,7 @@
                         cache = "sudo nix-collect-garbage; sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d; sudo nix store gc --debug";
                         suspend = "sudo systemctl suspend";
                         nix-history = "sudo nix profile history --profile /nix/var/nix/profiles/system";
+                        chromium = "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
                 };
 
                 initExtra = ''
@@ -75,6 +76,8 @@
                            mkdir -p -- "$1" &&
                            cd -P -- "$1"
                          }
+
+                         source ~/secrets.sh
                    '';
 
                 sessionVariables = {

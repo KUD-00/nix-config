@@ -1,19 +1,10 @@
 { config, lib, pkgs, ... }:
 
-let
-  aagl-gtk-on-nix = import (builtins.fetchTarball {
-      url = "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz";
-      sha256 = "1bkycmk27nykiah9qicnh3q79zpaw00gsz2sw5hf554451swr6h0";
-    }
-  );
-in
 {
   home.packages = with pkgs; [
-      aagl-gtk-on-nix.anime-game-launcher
-      aagl-gtk-on-nix.anime-borb-launcher
-      aagl-gtk-on-nix.honkers-railway-launcher
-      aagl-gtk-on-nix.honkers-launcher
 # apps
+      imv
+      mpv
       steam
       obs-studio
       vlc
@@ -21,6 +12,12 @@ in
       firefox
       slack
       google-chrome
+      calibre
+      chromium
+      nyxt
+      gitkraken
+      teamviewer
+      zulip
 
 # tools
       swaybg
@@ -30,11 +27,13 @@ in
       wireplumber
       grim
       indicator-sound-switcher
-      slurp
-      fcitx5-chinese-addons
+      slurp fcitx5-chinese-addons
       syncthing
+      hyphen
+      tracker
 
 # cli
+      atool
       ripgrep
       fd
       imagemagick
@@ -66,6 +65,10 @@ in
       lazygit
       tree-sitter
       gdb
+      amdgpu_top
+      radeontop
+      openssl
+      thttpd
 
 ## For Docker-OSX
       qemu
@@ -81,9 +84,22 @@ in
 # dev
       docker
       jetbrains-toolbox
+      gjs
+      gtk4.dev
+      libadwaita
+      webkitgtk_6_0
+      meson
+      pkg-config
+      gettext
+      flatpak
+      glib
+      strace
+      bcc
 
 ## C
+      gnumake
       gccgo13
+      libcap.dev
 
 ## web
       nodePackages.pnpm
@@ -94,5 +110,7 @@ in
 ## rust
       rustc
       cargo
-      ];
+## nix
+      nix-index
+  ];
 }

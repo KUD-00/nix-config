@@ -38,22 +38,7 @@
 
   networking.hostName = "Lain"; # Define your hostname.
 
-    networking.extraHosts = ''
-    0.0.0.0 public-data-api.mihoyo.com
-    0.0.0.0 overseauspider.yuanshen.com
-    0.0.0.0 log-upload-os.hoyoverse.com
-
-    0.0.0.0 log-upload.mihoyo.com
-    0.0.0.0 uspider.yuanshen.com
-    0.0.0.0 sg-public-data-api.hoyoverse.com
-
-    0.0.0.0 prd-lender.cdp.internal.unity3d.com
-    0.0.0.0 thind-prd-knob.data.ie.unity3d.com
-    0.0.0.0 thind-gke-usc.prd.data.corp.unity3d.com
-    0.0.0.0 cdp.cloud.unity3d.com
-    0.0.0.0 remote-config-proxy-prd.uca.cloud.unity3d.com
-    '';
-# Pick only one of the below networking options.
+  # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
@@ -161,6 +146,8 @@
     blueman
     bluez
     qpwgraph
+    # xdg-desktop-portal
+    # xdg-desktop-portal-gtk
 
     # fonts
     nerdfonts
@@ -170,6 +157,7 @@
     wget
     git
     kitty
+    gtk4
 
     # FHS
     (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
@@ -210,10 +198,14 @@
     wqy_zenhei
   ];
 
-  virtualisation = {
-    waydroid.enable = true;
-    lxd.enable = true;
-  };
+  documentation.enable = true;
+  documentation.man.enable = true;
+  documentation.dev.enable = true;
+
+  # virtualisation = {
+  #   waydroid.enable = true;
+  #   lxd.enable = true;
+  # };
   
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -229,6 +221,14 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
   services.blueman.enable = true;
+
+  services.hydra = {
+    enable = true;
+    hydraURL = "http://localhost:3020";
+    notificationSender = "hydra@localhost";
+    buildMachinesFiles = [];
+    useSubstitutes = true;
+  }
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
