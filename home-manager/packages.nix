@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
 # apps
+      notesnook
       imv
       mpv
       steam
@@ -82,6 +83,11 @@
       edk2
 
 # dev
+      kubernetes
+      kubectl
+      kind
+      minikube
+      kubectx
       docker
       jetbrains-toolbox
       gjs

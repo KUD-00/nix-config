@@ -1,4 +1,3 @@
-# This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
 { inputs, outputs, lib, config, pkgs, pkgs-stable, nix-doom-emacs, ... }: {
@@ -11,8 +10,11 @@
     # inputs.nix-colors.homeManagerModules.default
     nix-doom-emacs.hmModule
 
-    # You can also split up your configuration and import pieces of it here:
+    ./environment.nix
+    ./hypr.nix
+    ./waybar.nix
     ./bash.nix
+    ./kitty.nix
     ./starship.nix
     ./git.nix
     ./packages.nix

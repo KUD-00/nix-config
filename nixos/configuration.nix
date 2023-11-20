@@ -22,6 +22,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/develop" = {
+    device = "/dev/disk/by-uuid/19295e62-a0d0-4034-a38a-ffc84a9ccc89";
+    fsType = "ext4";
+  };
+
   nix.gc = {
     automatic = true;
     dates = "weekly";
@@ -64,11 +69,13 @@
     };
   };
 
-  virtualisation.docker.enable = true;
-
-  virtualisation.docker.rootless = {
+  virtualisation.docker = {
     enable = true;
-    setSocketVariable = true;
+    extraOptions = "--data-root /develop/docker";
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 
   # programs.xwayland.enable = true;
@@ -223,12 +230,14 @@
   services.blueman.enable = true;
 
   services.hydra = {
-    enable = true;
+    enable = false;
     hydraURL = "http://localhost:3020";
     notificationSender = "hydra@localhost";
     buildMachinesFiles = [];
     useSubstitutes = true;
-  }
+  };
+
+  services.flatpak.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
