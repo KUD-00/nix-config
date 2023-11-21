@@ -1,7 +1,4 @@
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-
 { inputs, outputs, lib, config, pkgs, pkgs-stable, nix-doom-emacs, ... }: {
-  # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -23,7 +20,6 @@
   ];
 
   nixpkgs = {
-    # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
@@ -39,11 +35,10 @@
       #   });
       # })
     ];
-    # Configure your nixpkgs instance
+
     config = {
       allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = (_: true); # Workaround for https://github.com/nix-community/home-manager/issues/2942
     };
   };
 
@@ -52,11 +47,6 @@
     homeDirectory = "/home/kud";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
-
-  # Enable home-manager and git
   programs.home-manager.enable = true;
 
   programs.doom-emacs = {
@@ -67,7 +57,6 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.05";  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 }
 

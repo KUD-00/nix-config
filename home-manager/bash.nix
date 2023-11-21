@@ -50,6 +50,14 @@
       mkdir -p -- "$1" &&
         cd -P -- "$1"
     }
-      '';
+    function cd() {
+      builtin cd "$@" && {
+        if [ -f "shell.nix" ]; then
+          echo "Entering nix-shell due to presence of shell.nix"
+          nix-shell
+        fi
+      }
+    }
+    '';
   };
 }

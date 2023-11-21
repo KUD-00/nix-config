@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  programs.atuin.enable = true;
+
   home.packages = with pkgs; [
 # apps
-      notesnook
-      imv
       mpv
       steam
       obs-studio
@@ -12,9 +12,7 @@
       vscode
       firefox
       slack
-      google-chrome
       calibre
-      chromium
       nyxt
       gitkraken
       teamviewer
@@ -28,7 +26,8 @@
       wireplumber
       grim
       indicator-sound-switcher
-      slurp fcitx5-chinese-addons
+      slurp 
+      fcitx5-chinese-addons
       syncthing
       hyphen
       tracker
@@ -39,7 +38,6 @@
       fd
       imagemagick
       joshuto
-      atuin
       eza
       bat
       du-dust
@@ -89,6 +87,7 @@
       minikube
       kubectx
       docker
+
       jetbrains-toolbox
       gjs
       gtk4.dev
@@ -106,12 +105,6 @@
       gnumake
       gccgo13
       libcap.dev
-
-## web
-      nodePackages.pnpm
-      nodePackages_latest.vercel
-      yarn
-      nodejs
 
 ## rust
       rustc
