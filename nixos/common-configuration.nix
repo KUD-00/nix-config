@@ -1,11 +1,6 @@
-{ inputs, config, pkgs, ... }:
+{ config, lib, pkgs,  ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
   boot.loader = {
     efi.canTouchEfiVariables = true;
 
@@ -16,19 +11,8 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  
-  fileSystems = {
-    "/data" = {
-      device = "/dev/disk/by-uuid/f27a2b4c-6e7b-4ad0-86d0-6d79f1799a64";
-      fsType = "ext4";
-    };
 
-    "/develop" = {
-      device = "/dev/disk/by-uuid/19295e62-a0d0-4034-a38a-ffc84a9ccc89";
-      fsType = "ext4";
-    };
-  };
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   nix.gc = {
     automatic = true;
@@ -44,11 +28,13 @@
     trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
   };
 
-  networking.hostName = "Lain";
-
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   time.timeZone = "Asia/Tokyo";
+
+  sound.enable = true;
+
+  security.rtkit.enable = true;
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -71,10 +57,6 @@
       setSocketVariable = true;
     };
   };
-
-  sound.enable = true;
-
-  security.rtkit.enable = true;
 
   hardware = {
     pulseaudio.enable = false;
@@ -151,6 +133,7 @@
   };
 
   programs.hyprland.enable = true;
+
   services = {
     blueman.enable = true;
 
@@ -176,41 +159,4 @@
 
   nixpkgs.config.allowBroken = true;
   nixpkgs.config.allowUnfree = true;
-
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05";
-
-  # --------------------------------------------------------------------------
-  # --------------------------------------------------------------------------
-  # virtualisation = {
-  #   waydroid.enable = true;
-  #   lxd.enable = true;
-  # };
-  
-  # --------------------------------------------------------------------------
-  # --------------------------------------------------------------------------
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-  # services.atuin.enable = true;
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-  
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 }
-

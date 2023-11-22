@@ -34,8 +34,8 @@
       gstat = "git status";
       gs = "git status";
       lsblk = "lsblk -f";
-      hm = "home-manager switch --flake .#kud@Lain";
-      nb = "sudo nixos-rebuild switch --flake .#Lain";
+      hm = "home-manager switch --flake .#$USER@$HOSTNAME";
+      nb = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
       update = "nix flake update; nb; hm";
       ps = "procs";
       cbp = "~/Developer/scripts/compress-blog-image.sh";

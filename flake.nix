@@ -59,7 +59,14 @@
         # system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [
-            ./nixos/configuration.nix
+            ./nixos/lain-configuration.nix
+          ];
+        };
+
+        Mikan = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./nixos/mikan-configuration.nix
           ];
         };
       };
@@ -69,6 +76,22 @@
       homeConfigurations = {
         "kud@Lain" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = {
+            inherit inputs outputs nixpkgs-stable nix-doom-emacs;
+
+            pkgs-stable = import nixpkgs-stable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+
+          };
+          modules = [
+            ./home-manager/home.nix
+          ];
+        };
+
+        "kud@Mikan" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs nixpkgs-stable nix-doom-emacs;
 
