@@ -85,6 +85,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # custom packages(for nixpkgs maintain)
+    marcel
+
     # basic tools
     rofi-wayland-unwrapped # app launcher
     cinnamon.nemo-with-extensions # file browser
