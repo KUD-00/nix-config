@@ -17,6 +17,8 @@
     ./packages.nix
     ./packages-stable.nix
     ./nvim.nix
+    ./dunst.nix
+    ./theme.nix
   ];
 
   nixpkgs = {

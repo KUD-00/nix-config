@@ -43,6 +43,8 @@
       suspend = "sudo systemctl suspend";
       nix-history = "sudo nix profile history --profile /nix/var/nix/profiles/system";
       chromium = "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
+      foliate4 = "flatpak run com.github.johnfactotum.Foliate";
+      y = "yazi";
     };
 
     initExtra = ''

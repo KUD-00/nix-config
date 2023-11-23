@@ -3,8 +3,9 @@
 {
   programs.atuin.enable = true;
 
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
 # apps
+      qq
       mpv
       steam
       obs-studio
@@ -17,6 +18,7 @@
       gitkraken
       teamviewer
       zulip
+      evince
 
 # tools
       swaybg
@@ -31,8 +33,11 @@
       syncthing
       hyphen
       tracker
+      openrgb
 
 # cli
+      yazi
+      cool-retro-term
       atool
       ripgrep
       fd
@@ -111,5 +116,12 @@
       cargo
 ## nix
       nix-index
-  ];
+  ]) ++ (with pkgs.gnome; [ 
+    nautilus
+    zenity
+    gnome-tweaks
+    eog
+    gvfs
+    dconf-editor
+  ]);
 }

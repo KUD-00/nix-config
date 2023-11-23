@@ -1,6 +1,10 @@
 { config, lib, pkgs,  ... }:
 
 {
+  imports = [
+    ./font.nix
+  ];
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
 
@@ -120,15 +124,6 @@
      }))
   ];
 
-  fonts.packages= with pkgs; [
-    jetbrains-mono
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    nerdfonts
-    font-awesome
-  ];
-
   documentation = {
     enable = true;
     man.enable = true;
@@ -158,6 +153,8 @@
     };
 
     flatpak.enable = true;
+
+    gvfs.enable = true;
   };
 
   nixpkgs.config.allowBroken = true;

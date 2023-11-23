@@ -86,11 +86,13 @@ $shift=SHIFT
 $menu=rofi -show drun
 
 $wallpaper_dir="/home/kud/Documents/wallpapers"
-$screen_file=$${HOME}/Documents/ScreenShots/screen_shot_$(date + "%Y-%m-%d_%H-%M-%S").png
+$screen_file=$HOME/Documents/ScreenShots/screen_shot_$(date + "%Y-%m-%d_%H-%M-%S").png
 
+exec-once=dunst
 exec-once=swaybg -i $(find $wallpaper_dir -type f | shuf -n 1) -m fill
 exec-once=waybar
 exec-once=fcitx5 --replace -d
+source=$HOME/.config/hypr/colors
 windowrulev2=float, class:^(.*polkit-kde.*)$
 
 exec-once=wl-paste --type text --watch cliphist store
@@ -105,7 +107,7 @@ bind=$alt, Print,  exec, grim - | wl-copy
 bind = $mainMod, Q, exec, kitty
 bind = $mainMod, P, killactive
 bind = $mainMod, M, exit
-bind = $mainMod, E, exec, nemo
+bind = $mainMod, E, exec, nautilus
 bind = $mainMod, V, togglefloating
 bind = $mainMod, SPACE, exec, $menu
 bind = $mainMod, J, togglesplit, # dwindle
