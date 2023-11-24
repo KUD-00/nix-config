@@ -117,24 +117,18 @@
                  color: rgb(242, 143, 173);
                  padding-right: 8px;
                }
-         #tray {
-                 padding-right: 8px;
-                 padding-left: 10px;
-               }
-         #mpd.paused {
-                 color: #414868;
-                 font-style: italic;
-               }
-         #mpd.stopped {
-                 background: transparent;
-               }
-         #mpd {
-                 color: #c0caf5;
-               }
          #custom-cava-internal{
                  font-family: "Hack Nerd Font" ;
                  color: #33ccff;
                }
+         #tray {
+           background-color: rgba(223, 192, 238, 0.1); /* Adjust color and opacity as needed */
+           border-radius: 10px; /* Adjust for desired roundness */
+           padding-top: 4px;
+           padding-bottom: 4px;
+           padding-right: 12px;
+           padding-left: 12px;
+         }
       '';
       settings = [{
         "layer" = "top";
@@ -142,23 +136,37 @@
         modules-left = [
           "custom/launcher"
           # "temperature"
-          "mpd"
-          "custom/cava-internal"
+          "hyprland/workspaces"
           "battery"
-          "tray"
         ];
         modules-center = [
           "clock"
         ];
         modules-right = [
+          "custom/acpi"
+          "tray"
+          "privacy"
           "custom/media"
           "pulseaudio"
           "backlight"
           "memory"
           "cpu"
           "network"
-          "custom/powermenu"
         ];
+        "hyprland/workspaces" = {
+          "format" = "<sub>{icon}</sub> {windows} ";
+            "format-window-separator" = " ";
+            "window-rewrite-default" = "";
+            "window-rewrite" = {
+              "firefox" = "";
+              "kitty" = "";
+              "code" = "󰨞";
+              "qq" = "󰻀";
+              "foliate" = "";
+              "steam" = "󰓓";
+              "nautilus" = "";
+            };
+        };
         "backlight"= {
           "tooltip"= false;
           "format"= " {}%";
@@ -177,9 +185,19 @@
           "format-alt"= "{time} {icon}";
           "format-icons"= ["" "" "" "" ""];
         };
+        "custom/acpi-performance" = {
+          "format"="󰉁 ";
+          "on-click" = "sudo fdisk -l";
+          "tooltip" = false;
+        };
+        "custom/acpi-performance" = {
+          "format"="󰉁 ";
+          "on-click" = "sudo fdisk -l";
+          "tooltip" = false;
+        };
         "custom/media"= {
           "max-length"= 20;
-          "format"= " ";
+          "format"= "  ";
           "return-type"= "json";
           "on-click"= "playerctl play-pause";
           "spacing" = 5;
@@ -189,10 +207,6 @@
           "on-click" = "pkill rofi || rofi2";
           "on-click-middle" = "exec default_wall";
           "on-click-right" = "bash ~/Developer/scripts/change-wallpaper.sh";
-          "tooltip" = false;
-        };
-        "custom/cava-internal" = {
-          "exec" = "sleep 1s && cava-internal";
           "tooltip" = false;
         };
         "pulseaudio" = {
@@ -208,8 +222,8 @@
         "clock" = {
           "interval" = 1;
           "format" = "{:%I:%M %p  %A %b %d}";
-          "tooltip" = true;
-          "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>";
+          # "tooltip" = true;
+          # "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>";
         };
         "memory" = {
           "interval" = 1;
@@ -220,34 +234,47 @@
         };
         "cpu" = {
           "interval" = 1;
-          "format" = "󰍛 {usage}%";
-        };
-        "mpd" = {
-          "max-length" = 25;
-          "format" = "<span foreground='#bb9af7'></span> {title}";
-          "format-paused" = " {title}";
-          "format-stopped" = "<span foreground='#bb9af7'></span>";
-          "format-disconnected" = "";
-          "on-click" = "mpc --quiet toggle";
-          "on-click-right" = "mpc update; mpc ls | mpc add";
-          "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
-          "on-scroll-up" = "mpc --quiet prev";
-          "on-scroll-down" = "mpc --quiet next";
-          "smooth-scrolling-threshold" = 5;
-          "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
+          "format" = "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
+          "format-icons" = [
+            "<span color='#69ff94'>▁</span>"  # green
+            "<span color='#2aa9ff'>▂</span>"  # blue
+            "<span color='#f8f8f2'>▃</span>"  # white
+            "<span color='#f8f8f2'>▄</span>"  # white
+            "<span color='#ffffa5'>▅</span>"  # yellow
+            "<span color='#ffffa5'>▆</span>"  # yellow
+            "<span color='#ff9977'>▇</span>"  # orange
+            "<span color='#dd532e'>█</span>"  # red
+          ];
         };
         "network" = {
           "format-disconnected" = "󰯡 Disconnected";
-          "format-ethernet" = "󰒢 Connected!";
+          "format-ethernet" = "󰒢 ";
           "format-linked" = "󰖪 {essid} (No IP)";
           "format-wifi" = "󰖩 {essid}";
           "interval" = 1;
           "tooltip" = false;
         };
-        "custom/powermenu" = {
-          "format" = "";
-          "on-click" = "pkill rofi || ~/.config/rofi/powermenu/type-3/powermenu.sh";
-          "tooltip" = false;
+        "privacy"= {
+          "icon-spacing"= 4;
+          "icon-size"= 18;
+          "transition-duration"= 250;
+          "modules"= [
+          {
+            "type"= "screenshare";
+            "tooltip"= true;
+            "tooltip-icon-size"= 24;
+          }
+          {
+            "type"= "audio-out";
+            "tooltip"= true;
+            "tooltip-icon-size"= 24;
+          }
+          {
+            "type"= "audio-in";
+            "tooltip"= true;
+            "tooltip-icon-size"= 24;
+          }
+          ];
         };
         "tray" = {
           "icon-size" = 15;

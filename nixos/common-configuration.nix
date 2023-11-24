@@ -12,11 +12,14 @@
       enable = true;
       configurationLimit = 5;
     };
+
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    initrd.kernelModules = [ "amdgpu" "acpi_call" ];
+  };
 
   nix.gc = {
     automatic = true;
@@ -39,6 +42,8 @@
   sound.enable = true;
 
   security.rtkit.enable = true;
+
+  security.polkit.enable = true;
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -87,6 +92,7 @@
     extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     initialPassword = "seki123";
   };
+
 
   environment.systemPackages = with pkgs; [
     # custom packages(for nixpkgs maintain)

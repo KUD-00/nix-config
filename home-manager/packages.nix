@@ -34,8 +34,10 @@
       hyphen
       tracker
       openrgb
+      libsForQt5.polkit-kde-agent
 
 # cli
+      nitch
       yazi
       cool-retro-term
       atool
