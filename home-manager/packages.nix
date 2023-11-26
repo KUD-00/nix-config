@@ -5,6 +5,8 @@
 
   home.packages = (with pkgs; [
 # apps
+      cpu-x
+      mission-center
       qq
       mpv
       steam
@@ -23,6 +25,7 @@
 # tools
       swaybg
       waybar
+      wttrbar
       wl-clipboard
       cliphist
       wireplumber

@@ -143,7 +143,7 @@
           "clock"
         ];
         modules-right = [
-          "custom/acpi"
+          "custom/acpi-performance"
           "tray"
           "privacy"
           "custom/media"
@@ -152,6 +152,7 @@
           "memory"
           "cpu"
           "network"
+          "custom/weather"
         ];
         "hyprland/workspaces" = {
           "format" = "<sub>{icon}</sub> {windows} ";
@@ -165,6 +166,8 @@
               "foliate" = "";
               "steam" = "󰓓";
               "nautilus" = "";
+              "cpu-x" = "";
+              "misssion-center" = "󰟌";
             };
         };
         "backlight"= {
@@ -185,10 +188,12 @@
           "format-alt"= "{time} {icon}";
           "format-icons"= ["" "" "" "" ""];
         };
-        "custom/acpi-performance" = {
-          "format"="󰉁 ";
-          "on-click" = "sudo fdisk -l";
-          "tooltip" = false;
+        "custom/weather" = {
+          "format" = "{} ° ";
+          "tooltip" = true;
+          "interval" = 3600;
+          "exec" = "wttrbar --location Kyoto";
+          "return-type" = "json";
         };
         "custom/acpi-performance" = {
           "format"="󰉁 ";
@@ -205,8 +210,8 @@
         "custom/launcher" = {
           "format" = " ";
           "on-click" = "pkill rofi || rofi2";
-          "on-click-middle" = "exec default_wall";
-          "on-click-right" = "bash ~/Developer/scripts/change-wallpaper.sh";
+          "on-click-middle" = "swaybg -i $WALLPAPER_DIR/space.jpg  -m fill > /dev/null";
+          "on-click-right" = "swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill > /dev/null";
           "tooltip" = false;
         };
         "pulseaudio" = {

@@ -38,7 +38,6 @@
       nb = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
       update = "nix flake update; nb; hm";
       ps = "procs";
-      cbp = "~/Developer/scripts/compress-blog-image.sh";
       cache = "sudo nix-collect-garbage; sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d; sudo nix store gc --debug";
       suspend = "sudo systemctl suspend";
       nix-history = "sudo nix profile history --profile /nix/var/nix/profiles/system";
@@ -59,6 +58,9 @@
           nix-shell
         fi
       }
+    }
+    function cbp() {
+      convert $WALLPAPER_DIR/$1 -quality 40% $BLOG_DIR/public/images/blog/$2.jpg
     }
     '';
   };

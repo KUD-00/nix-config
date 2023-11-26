@@ -67,6 +67,15 @@
 
           <match target="pattern">
             <test name="lang">
+              <string>zh-CN</string>
+            </test>
+            <edit name="family" mode="prepend" binding="strong">
+              <string>Noto Sans CJK SC</string>
+            </edit>
+          </match>
+
+          <match target="pattern">
+            <test name="lang">
               <string>zh-HK</string>
             </test>
             <test name="family">

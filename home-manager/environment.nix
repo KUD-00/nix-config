@@ -2,7 +2,7 @@
 
 {
   home = {
-    sessionVariables = {
+    sessionVariables = rec {
       BROWSER = "firefox";
       TERMINAL = "kitty";
       __GL_VRR_ALLOWED="1";
@@ -26,6 +26,10 @@
       SDL_VIDEODRIVER = "wayland";
       _JAVA_AWT_WM_NONEREPARENTING = "1";
       GDK_BACKEND = "wayland";
+
+      WALLPAPER_DIR = "$HOME/Documents/wallpapers";
+      DEVELOPER_DIR = "$HOME/Developer";
+      BLOG_DIR = "${DEVELOPER_DIR}/blog";
     };
   };
 }
