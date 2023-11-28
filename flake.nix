@@ -12,13 +12,13 @@
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
-
+    xremap-flake.url = "github:xremap/nix-flake";
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-doom-emacs, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-doom-emacs, xremap-flake, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -67,8 +67,11 @@
         };
 
         Mikan = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs xremap-flake; };
           modules = [
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ inputs.self.overlays.additions ];
+            })
             ./nixos/mikan-configuration.nix
           ];
         };

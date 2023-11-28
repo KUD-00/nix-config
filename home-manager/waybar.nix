@@ -134,28 +134,25 @@
         "layer" = "top";
         "position" = "top";
         modules-left = [
-          "custom/launcher"
-          # "temperature"
-          "hyprland/workspaces"
+          "custom/weather"
           "battery"
+          "hyprland/workspaces"
+          "custom/acpi-performance"
         ];
         modules-center = [
           "clock"
         ];
         modules-right = [
-          "custom/acpi-performance"
           "tray"
-          "privacy"
+          # "privacy"
           "custom/media"
           "pulseaudio"
-          "backlight"
           "memory"
           "cpu"
           "network"
-          "custom/weather"
         ];
         "hyprland/workspaces" = {
-          "format" = "<sub>{icon}</sub> {windows} ";
+          "format" = "<sub>{icon}</sub> {windows}  ";
             "format-window-separator" = " ";
             "window-rewrite-default" = "";
             "window-rewrite" = {
@@ -177,6 +174,8 @@
           "on-scroll-down"= "light -U 5";
         };
         "battery"= {
+          "on-click-middle" = "swaybg -i $WALLPAPER_DIR/space.jpg  -m fill > /dev/null";
+          "on-click-right" = "swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill > /dev/null";
           "states"= {
             "good"= 95;
             "warning"= 30;
@@ -189,14 +188,14 @@
           "format-icons"= ["" "" "" "" ""];
         };
         "custom/weather" = {
-          "format" = "{} ° ";
+          "format" = "{}° ";
           "tooltip" = true;
           "interval" = 3600;
           "exec" = "wttrbar --location Kyoto";
           "return-type" = "json";
         };
         "custom/acpi-performance" = {
-          "format"="󰉁 ";
+          "format"=" 󰉁 ";
           "on-click" = "sudo fdisk -l";
           "tooltip" = false;
         };
@@ -206,13 +205,6 @@
           "return-type"= "json";
           "on-click"= "playerctl play-pause";
           "spacing" = 5;
-        };
-        "custom/launcher" = {
-          "format" = " ";
-          "on-click" = "pkill rofi || rofi2";
-          "on-click-middle" = "swaybg -i $WALLPAPER_DIR/space.jpg  -m fill > /dev/null";
-          "on-click-right" = "swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill > /dev/null";
-          "tooltip" = false;
         };
         "pulseaudio" = {
           "scroll-step" = 1;

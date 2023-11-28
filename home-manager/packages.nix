@@ -23,6 +23,7 @@
       evince
 
 # tools
+      ydotool
       swaybg
       waybar
       wttrbar
