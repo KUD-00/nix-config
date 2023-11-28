@@ -19,6 +19,7 @@
     ./nvim.nix
     ./dunst.nix
     ./theme.nix
+    ./rofi.nix
   ];
 
   nixpkgs = {

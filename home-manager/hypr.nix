@@ -11,14 +11,14 @@ monitor=,preferred,auto,auto
 env = XCURSOR_SIZE,24
 
 input {
-  kb_layout = us
+  kb_layout = jp
   kb_variant =
   kb_model =
   kb_options =
   kb_rules =
   follow_mouse = 1
   touchpad {
-    natural_scroll = false
+    natural_scroll = true
   }
   sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
 }
@@ -33,7 +33,6 @@ general {
   border_size = 2
   col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
   col.inactive_border = rgba(595959aa)
-
   layout = dwindle
 }
 
@@ -78,10 +77,7 @@ device:epic-mouse-v1 {
 }
 
 $mainMod = ALT
-$shiftMod=SUPER_SHIFT
 $altMod=SUPER_ALT
-$alt=ALT
-$shift=SHIFT
 
 $menu=rofi -show drun
 
@@ -101,8 +97,15 @@ exec-once=wl-paste --type image --watch cliphist store
 bind=SUPER_SHIFT, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy 
 
 bind=, Print,      exec, grim $screen_file
-bind=$shiftMod, S, exec, grim -g "$(slurp)" - | wl-copy -t image/png
-bind=$alt, Print,  exec, grim - | wl-copy
+bind=SUPER, S, exec, grim -g "$(slurp)" - | wl-copy -t image/png
+
+bind=SUPER,B,exec,wtype "\\"
+bind=SUPER,U,exec,wtype "_"
+
+bind=$mainMod,H,exec,wtype -P left -p left
+bind=$mainMod,J,exec,wtype -P down -p down
+bind=$mainMod,K,exec,wtype -P up -p up
+bind=$mainMod,L,exec,wtype -P right -p right
 
 bind = $mainMod, Q, exec, kitty
 bind = $mainMod, P, killactive

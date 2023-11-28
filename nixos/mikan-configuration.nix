@@ -23,15 +23,10 @@
           remap = {
             "CapsLock" = "Backspace";
             "Alt_R" = "Enter";
+            "Super_L" = "Ctrl_R";
+            "Ctrl_R" = "Super_L";
 #            "Super" = "Ctrl_R";
 #            "Ctrl_R" = "Super";
-          };
-        }
-      ];
-      keymap = [
-        {
-          name = "Global";
-          remap = {
           };
         }
       ];

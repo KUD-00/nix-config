@@ -99,7 +99,6 @@
     marcel
 
     # basic tools
-    rofi-wayland-unwrapped # app launcher
     cinnamon.nemo-with-extensions # file browser
     blueman
     bluez

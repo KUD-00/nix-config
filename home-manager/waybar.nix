@@ -145,14 +145,14 @@
         modules-right = [
           "tray"
           # "privacy"
-          "custom/media"
+          # "custom/media"
           "pulseaudio"
           "memory"
           "cpu"
           "network"
         ];
         "hyprland/workspaces" = {
-          "format" = "<sub>{icon}</sub> {windows}  ";
+          "format" = "<sub>{icon}</sub> {windows} ";
             "format-window-separator" = " ";
             "window-rewrite-default" = "";
             "window-rewrite" = {
@@ -174,8 +174,8 @@
           "on-scroll-down"= "light -U 5";
         };
         "battery"= {
-          "on-click-middle" = "swaybg -i $WALLPAPER_DIR/space.jpg  -m fill > /dev/null";
-          "on-click-right" = "swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill > /dev/null";
+          "on-scroll-up" = "swaybg -i $WALLPAPER_DIR/space.jpg  -m fill > /dev/null";
+          "on-scroll-down" = "swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill > /dev/null";
           "states"= {
             "good"= 95;
             "warning"= 30;
