@@ -11,18 +11,15 @@
       mpv
       steam
       obs-studio
-      vlc
-      vscode
       firefox
       slack
       calibre
-      nyxt
       gitkraken
-      teamviewer
       zulip
       evince
 
 # tools
+      rofi-wayland
       wev
       wtype
       swaybg

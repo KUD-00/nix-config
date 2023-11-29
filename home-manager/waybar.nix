@@ -165,6 +165,9 @@
               "nautilus" = "";
               "cpu-x" = "";
               "misssion-center" = "󰟌";
+              "rofi" = "󱓞";
+              "mpv" = "";
+              "fcitx5" = "󰌌";
             };
         };
         "backlight"= {
@@ -218,9 +221,9 @@
         };
         "clock" = {
           "interval" = 1;
-          "format" = "{:%I:%M %p  %A %b %d}";
-          # "tooltip" = true;
-          # "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>";
+          "format" = "{:%I:%M %p}";
+          "tooltip" = true;
+          "tooltip-format"= "{%A %b %d}";
         };
         "memory" = {
           "interval" = 1;

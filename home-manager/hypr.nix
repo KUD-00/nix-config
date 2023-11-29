@@ -6,7 +6,7 @@
     enable = true;
     systemd.enable = true;
     extraConfig = ''
-monitor=,preferred,auto,auto
+monitor=,preferred,auto,1.6
 
 env = XCURSOR_SIZE,24
 
@@ -23,9 +23,9 @@ input {
   sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
 }
 
-xwayland {
-  force_zero_scaling = true
-}
+# xwayland {
+#   force_zero_scaling = true
+# }
 
 general {
   gaps_in = 5
@@ -113,7 +113,6 @@ bind = $mainMod, M, exit
 bind = $mainMod, E, exec, nautilus
 bind = $mainMod, V, togglefloating
 bind = $mainMod, SPACE, exec, $menu
-bind = $mainMod, J, togglesplit, # dwindle
 bind = $mainMod, F, fullscreen,
 
 bind = $mainMod, left, movefocus, l

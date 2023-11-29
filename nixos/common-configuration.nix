@@ -99,7 +99,6 @@
     marcel
 
     # basic tools
-    cinnamon.nemo-with-extensions # file browser
     blueman
     bluez
     qpwgraph

@@ -1,8 +1,3 @@
-{ config, pkgs, ... }:
-
-{
-  home.file.".config/rofi/config.rasi".text = ''
-
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,run,filebrowser,window";
@@ -203,7 +198,3 @@ error-message {
     background-color:            @background;
     text-color:                  @foreground;
 }
-
-    '';
-}
-
