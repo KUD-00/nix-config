@@ -89,7 +89,7 @@ exec-once=swaybg -i $(find $wallpaper_dir -type f | shuf -n 1) -m fill
 exec-once=waybar
 exec-once=fcitx5 --replace -d
 source=$HOME/.config/hypr/colors
-windowrulev2=float, class:^(.*polkit-kde.*)$
+windowrulev2=float, class:^(*polkit*)$
 
 exec-once=wl-paste --type text --watch cliphist store
 exec-once=wl-paste --type image --watch cliphist store

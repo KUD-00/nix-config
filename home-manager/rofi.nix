@@ -132,7 +132,7 @@ listview {
     fixed-columns:               true;
     
     spacing:                     10px;
-    background-color:            transparent;
+    background-color:            @background;
     text-color:                  @foreground;
     cursor:                      "default";
 }
@@ -143,12 +143,12 @@ element {
     spacing:                     15px;
     padding:                     8px;
     border-radius:               10px;
-    background-color:            transparent;
+    background-color:            @background;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 element normal.normal {
-    background-color:            inherit;
+    background-color:            @background;
     text-color:                  inherit;
 }
 element normal.urgent {
@@ -203,7 +203,6 @@ error-message {
     background-color:            @background;
     text-color:                  @foreground;
 }
-
     '';
 }
 

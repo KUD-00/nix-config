@@ -111,14 +111,6 @@ color: rgb(221, 182, 242);
 #network.disconnected {
   color: rgb(255, 255, 255);
 }
-#tray {
-  background-color: rgba(223, 192, 238, 0.1); /* Adjust color and opacity as needed */
-  border-radius: 10px; /* Adjust for desired roundness */
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 12px;
-  padding-left: 12px;
-}
       '';
       settings = [{
         "layer" = "top";
@@ -154,7 +146,7 @@ color: rgb(221, 182, 242);
               "steam" = "󰓓";
               "nautilus" = "";
               "cpu-x" = "";
-              "misssion-center" = "󰟌";
+              "missioncenter" = "󰟌";
               "rofi" = "󱓞";
               "mpv" = "";
               "fcitx5" = "󰌌";
@@ -181,14 +173,14 @@ color: rgb(221, 182, 242);
           "format-icons"= ["" "" "" "" ""];
         };
         "custom/weather" = {
-          "format" = "{}° ";
+          "format" = "{}°";
           "tooltip" = true;
           "interval" = 3600;
           "exec" = "wttrbar --location Kyoto";
           "return-type" = "json";
         };
         "custom/acpi-performance" = {
-          "format"=" 󰉁 ";
+          "format"="󰉁";
           "on-click" = "sudo fdisk -l";
           "tooltip" = false;
         };

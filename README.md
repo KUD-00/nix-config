@@ -4,7 +4,7 @@
 
 forked from Misterio77's [starter](https://github.com/Misterio77/nix-starter-configs), copied a lot from HeinzDev's [config](https://github.com/HeinzDev/Hyprland-dotfiles)
 
-now working on two setup:
+now working on two setups:
 - Desktop: 13600K+6600XT+ASUS B660i
 - Laptop: 7840HS XiaoXin 14 (2023)
 

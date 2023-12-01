@@ -35,6 +35,7 @@
       tracker
       openrgb
       libsForQt5.polkit-kde-agent # seems not working
+      polkit_gnome
 
 # cli
 ## app
