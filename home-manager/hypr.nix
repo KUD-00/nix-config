@@ -101,6 +101,7 @@ bind=SUPER, S, exec, grim -g "$(slurp)" - | wl-copy -t image/png
 
 bind=SUPER,B,exec,wtype "\\"
 bind=SUPER,U,exec,wtype "_"
+bind=SUPER,V,exec,wtype "|"
 
 bind=$mainMod,H,exec,wtype -P left -p left
 bind=$mainMod,J,exec,wtype -P down -p down

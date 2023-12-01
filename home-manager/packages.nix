@@ -16,50 +16,45 @@
       calibre
       gitkraken
       zulip
-      evince
+      cool-retro-term
 
-# tools
+# desktop
       rofi-wayland
-      wev
+      wev # test input event
       wtype
       swaybg
       waybar
-      wttrbar
+      wttrbar # weather for waybar
       wl-clipboard
       cliphist
       wireplumber
       grim
-      indicator-sound-switcher
-      slurp 
+      indicator-sound-switcher # seems not working
+      slurp # select a region of screen in wayland
       fcitx5-chinese-addons
-      syncthing
-      hyphen
       tracker
       openrgb
-      libsForQt5.polkit-kde-agent
+      libsForQt5.polkit-kde-agent # seems not working
 
 # cli
-      nitch
+## app
+      syncthing
       yazi
-      cool-retro-term
+## fun
+      nitch
+## tool
       atool
       ripgrep
       fd
       imagemagick
-      joshuto
       eza
       bat
       du-dust
       duf
       gh
       nvtop-amd
-      neofetch
-      zip
-      xz
-      unzip
-      p7zip
+      amdgpu_top
       jq
-      fzf
       glow
       glances
       tldr
@@ -69,15 +64,20 @@
       playerctl
       gping
       pciutils
-      unrar
       lazygit
       tree-sitter
       gdb
-      amdgpu_top
-      radeontop
       openssl
       thttpd
 
+### archives
+      zip
+      xz
+      unzip
+      p7zip
+      unrar
+
+#TODO: test to remove these
 ## For Docker-OSX
       qemu
       libvirt
@@ -90,13 +90,6 @@
       edk2
 
 # dev
-      kubernetes
-      kubectl
-      kind
-      minikube
-      kubectx
-      docker
-
       jetbrains-toolbox
       gjs
       gtk4.dev
@@ -110,6 +103,13 @@
       strace
       bcc
 
+## kubernetes
+      kubernetes
+      kubectl
+      kind
+      minikube
+      kubectx
+      docker
 ## C
       gnumake
       gccgo13
@@ -120,6 +120,8 @@
       cargo
 ## nix
       nix-index
+
+## add some gnome packages
   ]) ++ (with pkgs.gnome; [ 
     nautilus
     zenity

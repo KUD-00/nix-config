@@ -30,6 +30,9 @@
       WALLPAPER_DIR = "$HOME/Documents/wallpapers";
       DEVELOPER_DIR = "$HOME/Developer";
       BLOG_DIR = "${DEVELOPER_DIR}/blog";
+
+      NIXPKGS_ALLOW_UNFREE = "1";
+      NIXPKGS_ALLOW_BROKEN = "1";
     };
   };
 }

@@ -13,9 +13,8 @@
     ./bash.nix
     ./kitty.nix
     ./starship.nix
-    ./git.nix
     ./packages.nix
-    ./packages-stable.nix
+#    ./packages-stable.nix
     ./nvim.nix
     ./dunst.nix
     ./theme.nix
@@ -50,11 +49,19 @@
     homeDirectory = "/home/kud";
   };
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    
+    git = {
+      enable = true;
+      userName  = "kud@nix";
+      userEmail = "kasa7qi@gmail.com";
+    };
 
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ../config/doom.d;
+    doom-emacs = {
+      enable = true;
+      doomPrivateDir = ../config/doom.d;
+    };
   };
 
   # Nicely reload system units when changing configs

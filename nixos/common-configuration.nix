@@ -104,7 +104,6 @@
     qpwgraph
 
     # basic dev
-    git
     kitty
 
     # FHS
@@ -134,7 +133,9 @@
     dev.enable = true;
   };
 
-  programs.hyprland.enable = true;
+  programs = {
+    hyprland.enable = true;
+  };
 
   services = {
     blueman.enable = true;

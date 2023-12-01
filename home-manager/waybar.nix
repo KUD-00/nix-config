@@ -178,7 +178,7 @@
         };
         "battery"= {
           "on-scroll-up" = "swaybg -i $WALLPAPER_DIR/space.jpg  -m fill > /dev/null";
-          "on-scroll-down" = "swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill > /dev/null";
+          "on-click-right" = "swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill > /dev/null";
           "states"= {
             "good"= 95;
             "warning"= 30;

@@ -3,7 +3,7 @@
 {
   programs.bash = {
     enable = true;
-
+#TODO: add a alias for atool or archive extraction auto-detect file extension
     shellAliases = {
       ls = "eza --long --icons --hyperlink --classify --all --bytes --header --modified --mounts --git";
       tree = "eza -I .git -T -L ";
@@ -12,9 +12,6 @@
       grep = "grep -i --color=auto";
       du = "dust";
       df = "duf";
-      chat = "chatgpt";
-      j = "joshuto";
-      routine = "routine.sh";
       rocm = "sudo docker run \
               -it \
               --network=host \
@@ -31,7 +28,6 @@
       gcm = "git commit -m ";
       gpush = "git push";
       gpull = "git pull";
-      gstat = "git status";
       gs = "git status";
       lsblk = "lsblk -f";
       hm = "home-manager switch --flake .#$USER@$HOSTNAME";
@@ -41,7 +37,6 @@
       cache = "sudo nix-collect-garbage; sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d; sudo nix store gc --debug";
       suspend = "sudo systemctl suspend";
       nix-history = "sudo nix profile history --profile /nix/var/nix/profiles/system";
-      chromium = "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
       foliate4 = "flatpak run com.github.johnfactotum.Foliate";
       y = "yazi";
     };

@@ -12,7 +12,6 @@
     inputs.home-manager.packages.${pkgs.system}.default
   ];
 
-#TODO: move this to home-manager
   services.xremap = {
     userName = "kud";
     serviceMode = "user";
@@ -25,8 +24,6 @@
             "Alt_R" = "Enter";
             "Super_L" = "Ctrl_R";
             "Ctrl_R" = "Super_L";
-#            "Super" = "Ctrl_R";
-#            "Ctrl_R" = "Super";
           };
         }
       ];
