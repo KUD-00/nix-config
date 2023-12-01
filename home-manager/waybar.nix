@@ -8,127 +8,117 @@
         target = "graphical-session.target";
       };
       style = ''
-               * {
-                 font-family: "JetBrainsMono Nerd Font";
-                 font-size: 12pt;
-                 font-weight: bold;
-                 border-radius: 8px;
-                 transition-property: background-color;
-                 transition-duration: 0.5s;
-               }
-               @keyframes blink_red {
-                 to {
-                   background-color: rgb(242, 143, 173);
-                   color: rgb(26, 24, 38);
-                 }
-               }
-               .warning, .critical, .urgent {
-                 animation-name: blink_red;
-                 animation-duration: 1s;
-                 animation-timing-function: linear;
-                 animation-iteration-count: infinite;
-                 animation-direction: alternate;
-               }
-               window#waybar {
-                 background-color: transparent;
-               }
-               window > box {
-                 margin-left: 5px;
-                 margin-right: 5px;
-                 margin-top: 5px;
-                 background-color: #1e1e2a;
-                 padding: 3px;
-                 padding-left:8px;
-                 border: 2px none #33ccff;
-               }
-         #workspaces {
-                 padding-left: 0px;
-                 padding-right: 4px;
-               }
-         #workspaces button {
-                 padding-top: 5px;
-                 padding-bottom: 5px;
-                 padding-left: 6px;
-                 padding-right: 6px;
-               }
-         #workspaces button.active {
-                 background-color: rgb(181, 232, 224);
-                 color: rgb(26, 24, 38);
-               }
-         #workspaces button.urgent {
-                 color: rgb(26, 24, 38);
-               }
-         #workspaces button:hover {
-                 background-color: rgb(248, 189, 150);
-                 color: rgb(26, 24, 38);
-               }
-               tooltip {
-                 background: rgb(48, 45, 65);
-               }
-               tooltip label {
-                 color: rgb(217, 224, 238);
-               }
-         #custom-launcher {
-                 font-size: 20px;
-                 padding-left: 8px;
-                 padding-right: 6px;
-                 color: #7ebae4;
-               }
-         #mode, #clock, #memory, #temperature,#cpu,#mpd, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
-                 padding-left: 10px;
-                 padding-right: 10px;
-               }
-               /* #mode { */
-               /* 	margin-left: 10px; */
-               /* 	background-color: rgb(248, 189, 150); */
-               /*     color: rgb(26, 24, 38); */
-               /* } */
-         #memory {
-                 color: rgb(181, 232, 224);
-               }
-         #cpu {
-                 color: rgb(245, 194, 231);
-               }
-         #clock {
-                 color: rgb(217, 224, 238);
-               }
-        /* #idle_inhibitor {
-                 color: rgb(221, 182, 242);
-               }*/
-         #custom-wall {
-                 color: #33ccff;
-            }
-         #temperature {
-                 color: rgb(150, 205, 251);
-               }
-         #backlight {
-                 color: rgb(248, 189, 150);
-               }
-         #pulseaudio {
-                 color: rgb(245, 224, 220);
-               }
-         #network {
-                 color: #ABE9B3;
-               }
-         #network.disconnected {
-                 color: rgb(255, 255, 255);
-               }
-         #custom-powermenu {
-                 color: rgb(242, 143, 173);
-                 padding-right: 8px;
-               }
-         #custom-cava-internal{
-                 font-family: "Hack Nerd Font" ;
-                 color: #33ccff;
-               }
-         #tray {
-           background-color: rgba(223, 192, 238, 0.1); /* Adjust color and opacity as needed */
-           border-radius: 10px; /* Adjust for desired roundness */
-           padding-top: 4px;
-           padding-bottom: 4px;
-           padding-right: 12px;
-           padding-left: 12px;
-         }
+window#waybar.hidden {
+  opacity: 0.2;
+}
+#window {
+  margin-top: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  transition: none;
+  color: transparent;
+  background: transparent;
+}
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12pt;
+  min-height: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+@keyframes blink_red {
+  to {
+    background-color: rgb(242, 143, 173);
+    color: rgb(26, 24, 38);
+  }
+}
+.warning, .critical, .urgent {
+  animation-name: blink_red;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+window#waybar {
+  background-color: transparent;
+}
+#workspaces {
+  padding-left: 0px;
+  padding-right: 4px;
+}
+#workspaces button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+#workspaces button.active {
+  background-color: rgb(181, 232, 224);
+  color: rgb(26, 24, 38);
+}
+#workspaces button.urgent {
+  color: rgb(26, 24, 38);
+}
+#workspaces button:hover {
+  background-color: rgb(248, 189, 150);
+  color: rgb(26, 24, 38);
+}
+tooltip {
+  background: rgb(48, 45, 65);
+}
+tooltip label {
+  color: rgb(217, 224, 238);
+}
+#mode, #clock, #memory, #temperature,#cpu, #temperature, #backlight, #pulseaudio, 
+#network, #battery, #cpu,  #workspaces, #custom-weather, #tray, #custom-acpi-performance {
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #1e1e2a;
+}
+/* #mode { */
+/* 	margin-left: 10px; */
+/* 	background-color: rgb(248, 189, 150); */
+/*     color: rgb(26, 24, 38); */
+/* } */
+#memory {
+  color: rgb(181, 232, 224);
+}
+#cpu {
+  color: rgb(245, 194, 231);
+}
+#clock {
+  color: rgb(217, 224, 238);
+}
+/* #idle_inhibitor {
+color: rgb(221, 182, 242);
+}*/
+#temperature {
+  color: rgb(150, 205, 251);
+}
+#backlight {
+  color: rgb(248, 189, 150);
+}
+#pulseaudio {
+  color: rgb(245, 224, 220);
+}
+#network {
+  color: #ABE9B3;
+}
+#network.disconnected {
+  color: rgb(255, 255, 255);
+}
+#tray {
+  background-color: rgba(223, 192, 238, 0.1); /* Adjust color and opacity as needed */
+  border-radius: 10px; /* Adjust for desired roundness */
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 12px;
+  padding-left: 12px;
+}
       '';
       settings = [{
         "layer" = "top";

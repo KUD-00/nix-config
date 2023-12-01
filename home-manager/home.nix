@@ -56,6 +56,11 @@
       enable = true;
       userName  = "kud@nix";
       userEmail = "kasa7qi@gmail.com";
+      extraConfig = {
+        credential.helper = "${
+          pkgs.git.override { withLibsecret = true; }
+        }/bin/git-credential-libsecret";
+      };
     };
 
     doom-emacs = {
