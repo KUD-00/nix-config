@@ -47,14 +47,10 @@ window#waybar {
   background-color: transparent;
 }
 #workspaces {
-  padding-left: 0px;
-  padding-right: 4px;
+  background-color: transparent;
 }
 #workspaces button {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 6px;
-  padding-right: 6px;
+  background-color: transparent;
 }
 #workspaces button.active {
   background-color: rgb(181, 232, 224);
@@ -75,15 +71,12 @@ tooltip label {
 }
 #mode, #clock, #memory, #temperature,#cpu, #temperature, #backlight, #pulseaudio, 
 #network, #battery, #cpu,  #workspaces, #custom-weather, #tray, #custom-acpi-performance {
+  margin-top: 6px;
+  margin-left: 8px;
   padding-left: 10px;
   padding-right: 10px;
   background: #1e1e2a;
 }
-/* #mode { */
-/* 	margin-left: 10px; */
-/* 	background-color: rgb(248, 189, 150); */
-/*     color: rgb(26, 24, 38); */
-/* } */
 #memory {
   color: rgb(181, 232, 224);
 }
@@ -93,9 +86,6 @@ tooltip label {
 #clock {
   color: rgb(217, 224, 238);
 }
-/* #idle_inhibitor {
-color: rgb(221, 182, 242);
-}*/
 #temperature {
   color: rgb(150, 205, 251);
 }

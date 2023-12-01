@@ -44,6 +44,9 @@
 ## fun
       nitch
 ## tool
+      pamixer
+      light
+      brightnessctl
       atool
       ripgrep
       fd
