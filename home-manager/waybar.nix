@@ -140,6 +140,7 @@ tooltip label {
               "rofi" = "󱓞";
               "mpv" = "";
               "fcitx5" = "󰌌";
+              "easyeffects" = "󰚳";
             };
         };
         "backlight"= {

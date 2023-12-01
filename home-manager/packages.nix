@@ -17,6 +17,7 @@
       gitkraken
       zulip
       cool-retro-term
+      zoom-us
 
 # desktop
       rofi-wayland
@@ -37,6 +38,18 @@
       libsForQt5.polkit-kde-agent # seems not working
       polkit_gnome
 
+# for nvim
+      luajitPackages.luarocks-nix
+      php83Packages.composer
+      php
+      corepack_21
+      nodejs_21
+      zulu17
+      julia_18
+      python3
+      python311Packages.pip
+      python311Packages.venvShellHook
+
 # cli
 ## app
       syncthing
@@ -44,6 +57,8 @@
 ## fun
       nitch
 ## tool
+      wget
+      easyeffects
       pamixer
       light
       brightnessctl
