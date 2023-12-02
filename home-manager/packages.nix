@@ -57,6 +57,7 @@
 ## fun
       nitch
 ## tool
+      libnotify
       wget
       easyeffects
       pamixer

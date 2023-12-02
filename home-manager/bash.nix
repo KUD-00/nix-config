@@ -46,6 +46,7 @@
       mkdir -p -- "$1" &&
         cd -P -- "$1"
     }
+
     function cd() {
       builtin cd "$@" && {
         if [ -f "shell.nix" ]; then
@@ -54,6 +55,7 @@
         fi
       }
     }
+
     function cbp() {
       convert $WALLPAPER_DIR/$1 -quality 40% $BLOG_DIR/public/images/blog/$2.jpg
     }

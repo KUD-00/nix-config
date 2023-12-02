@@ -3,6 +3,7 @@
 {
   imports = [
     ./font.nix
+    ./services.nix
   ];
 
   boot.loader = {
@@ -99,7 +100,6 @@
     marcel
 
     # basic tools
-    blueman
     bluez
     qpwgraph
 
@@ -153,28 +153,6 @@
     };
   };
 
-  services = {
-    blueman.enable = true;
-
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-
-    hydra = {
-      enable = false;
-      hydraURL = "http://localhost:3020";
-      notificationSender = "hydra@localhost";
-      buildMachinesFiles = [];
-      useSubstitutes = true;
-    };
-
-    flatpak.enable = true;
-
-    gvfs.enable = true;
-  };
 
   nixpkgs.config.allowBroken = true;
   nixpkgs.config.allowUnfree = true;

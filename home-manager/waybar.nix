@@ -70,7 +70,8 @@ tooltip label {
   color: rgb(217, 224, 238);
 }
 #mode, #clock, #memory, #temperature,#cpu, #temperature, #backlight, #pulseaudio, 
-#network, #battery, #cpu,  #workspaces, #custom-weather, #tray, #custom-acpi-performance {
+#network, #battery, #cpu,  #workspaces, #custom-weather, #tray, 
+#custom-acpi-performance, #custom-acpi-battery {
   margin-top: 6px;
   margin-left: 8px;
   padding-left: 10px;
@@ -110,6 +111,7 @@ tooltip label {
           "battery"
           "hyprland/workspaces"
           "custom/acpi-performance"
+          "custom/acpi-battery"
         ];
         modules-center = [
           "clock"
@@ -141,6 +143,9 @@ tooltip label {
               "mpv" = "";
               "fcitx5" = "󰌌";
               "easyeffects" = "󰚳";
+              "zoom-us" = "󰃽";
+              "zoom" = "󰃽";
+              "polkit-gnome-authentication-agent-1" = "󰌆";
             };
         };
         "backlight"= {
@@ -171,8 +176,13 @@ tooltip label {
           "return-type" = "json";
         };
         "custom/acpi-performance" = {
-          "format"="󰉁";
-          "on-click" = "sudo fdisk -l";
+          "format"="󰉁 P";
+          "on-click" = "bash -c '~/Developer/scripts/acpi-toggle.sh performance'";
+          "tooltip" = false;
+        };
+        "custom/acpi-battery" = {
+          "format"="󱈏 B";
+          "on-click" = "bash -c '~/Developer/scripts/acpi-toggle.sh battery'";
           "tooltip" = false;
         };
         "custom/media"= {

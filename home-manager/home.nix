@@ -19,6 +19,7 @@
     ./dunst.nix
     ./theme.nix
     ./rofi.nix
+    ./scripts.nix
   ];
 
   nixpkgs = {
