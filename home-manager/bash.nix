@@ -38,12 +38,18 @@
       suspend = "sudo systemctl suspend";
       nix-history = "sudo nix profile history --profile /nix/var/nix/profiles/system";
       foliate4 = "flatpak run com.github.johnfactotum.Foliate";
-      y = "yazi";
+      f = "yazi";
+      current-all-packages = "nix-store -q --requisites $CURRENT_NIXOS_SYSTEM";
+      where-nix = "current-all-packages | grep -i";
     };
 
 # any better ideas?
     initExtra = ''
     export CURRENT_NIXOS_SYSTEM=$(readlink -f /nix/var/nix/profiles/system)
+
+    function who-depends-on () {
+      nix-store --query --referrers $(where-nix $1)
+    }
 
     function nd () {
       mkdir -p -- "$1" &&

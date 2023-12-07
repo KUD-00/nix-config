@@ -106,13 +106,13 @@ bind=SUPER, S, exec, grim -g "$(slurp)" - | wl-copy -t image/png
 bind=SUPER,B,exec,wtype "\\"
 bind=SUPER,U,exec,wtype "_"
 bind=SUPER,V,exec,wtype "|"
+bind=,code:49,exec,wtype -k Escape
 
 bind=,code:121,exec,pamixer -t
 bind=,code:122,exec,pamixer -d 10
 bind=,code:123,exec,pamixer -i 10
+bind=,code:123,exec,pamixer -i 10
 bind=,code:232,exec,brightnessctl set 10%-
-bind=,code:233,exec,brightnessctl set 10%+
-
 
 bind=$mainMod,H,exec,wtype -P left -p left
 bind=$mainMod,J,exec,wtype -P down -p down

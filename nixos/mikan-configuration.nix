@@ -23,7 +23,7 @@
           remap = {
             "CapsLock" = "Backspace";
             "Alt_R" = "Enter";
-            "Super_L" = "Ctrl_R";
+            "Super_L" = "Ctrl_L";
             "Ctrl_R" = "Super_L";
           };
         }

@@ -51,5 +51,9 @@
     gvfs.enable = true;
 
     upower.enable = true;
+
+    dbus.packages = with pkgs; [
+      gnome.gnome-keyring
+    ];
   };
 }

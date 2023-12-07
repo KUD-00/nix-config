@@ -67,6 +67,7 @@
           ];
         };
 
+        # nix build .#nixosConfigurations.Mikan.config.system.build.toplevel
         Mikan = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs xremap-flake; };
           modules = [

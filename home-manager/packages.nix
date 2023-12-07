@@ -19,7 +19,8 @@
       cool-retro-term
       zoom-us
       helix
-
+      fractal
+      
 # desktop
       rofi-wayland
       wev # test input event
@@ -145,6 +146,7 @@
 
 ## add some gnome packages
   ]) ++ (with pkgs.gnome; [ 
+    gnome-keyring
     gnome-disk-utility
     nautilus
     zenity
