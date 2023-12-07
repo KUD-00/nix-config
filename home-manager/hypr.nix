@@ -23,9 +23,9 @@ input {
   sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
 }
 
-# xwayland {
-#   force_zero_scaling = true
-# }
+xwayland {
+  force_zero_scaling = true
+}
 
 general {
   gaps_in = 5

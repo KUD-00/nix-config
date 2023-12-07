@@ -22,7 +22,7 @@
           introducer = true;
         };
         Lain = {
-          id = "";
+          id = "NORNEXR-KAIUZUJ-2F4YC6M-RLEYOWE-D75RFYM-J4SWQJJ-BTPABV7-TF77VAJ";
           autoAcceptFolders = true;
           introducer = true;
         };
