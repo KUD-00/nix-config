@@ -2,24 +2,24 @@
   description = "kud's nixos config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
-
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     xremap-flake.url = "github:xremap/nix-flake";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+
+    agenix.url = "github:ryantm/agenix";
+
+    berberman = {
+      url = "github:berberman/flakes";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-doom-emacs, xremap-flake, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, xremap-flake, nixos-hardware, berberman, agenix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -53,7 +53,6 @@
       # These are usually stuff you would upstream into home-manager
       homeManagerModules = import ./modules/home-manager;
 
-      # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         Lain = nixpkgs.lib.nixosSystem {
@@ -64,6 +63,7 @@
               nixpkgs.overlays = [ inputs.self.overlays.additions ];
             })
             ./nixos/lain-configuration.nix
+            agenix.nixosModules.default
           ];
         };
 
@@ -71,10 +71,14 @@
           specialArgs = { inherit inputs outputs xremap-flake; };
           modules = [
             ({ pkgs, ... }: {
-              nixpkgs.overlays = [ inputs.self.overlays.additions ];
+              nixpkgs.overlays = [ 
+                inputs.self.overlays.additions
+                inputs.berberman.overlays.default
+              ];
             })
             ./nixos/mikan-configuration.nix
             nixos-hardware.nixosModules.lenovo-ideapad-slim-5 
+            agenix.nixosModules.default
           ];
         };
       };
@@ -85,13 +89,7 @@
         "kud@Lain" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs nixpkgs-stable nix-doom-emacs;
-
-            pkgs-stable = import nixpkgs-stable {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-
+            inherit inputs outputs nix-doom-emacs;
           };
           modules = [
             ./home-manager/home.nix
@@ -101,13 +99,7 @@
         "kud@Mikan" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs nixpkgs-stable nix-doom-emacs;
-
-            pkgs-stable = import nixpkgs-stable {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-
+            inherit inputs outputs nix-doom-emacs;
           };
           modules = [
             ./home-manager/home.nix

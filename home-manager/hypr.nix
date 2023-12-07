@@ -5,6 +5,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+#     autoLogin = {
+#       enable = lib.mkDefault true;
+#       shell = lib.mkDefault "bash";
+#     };
     extraConfig = ''
 monitor=,preferred,auto,1.6
 
@@ -23,9 +27,9 @@ input {
   sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
 }
 
-# xwayland {
-#   force_zero_scaling = true
-# }
+xwayland {
+  force_zero_scaling = true
+}
 
 general {
   gaps_in = 5

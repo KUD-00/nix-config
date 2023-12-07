@@ -18,6 +18,7 @@
       zulip
       cool-retro-term
       zoom-us
+      helix
 
 # desktop
       rofi-wayland
@@ -52,11 +53,12 @@
 
 # cli
 ## app
-      syncthing
       yazi
 ## fun
       nitch
 ## tool
+      xdg-utils
+      powerstat
       libnotify
       wget
       easyeffects
@@ -143,6 +145,7 @@
 
 ## add some gnome packages
   ]) ++ (with pkgs.gnome; [ 
+    gnome-disk-utility
     nautilus
     zenity
     gnome-tweaks

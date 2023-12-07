@@ -142,10 +142,12 @@ tooltip label {
               "rofi" = "󱓞";
               "mpv" = "";
               "fcitx5" = "󰌌";
+              "fcitx5-configtool" = "󰌌";
               "easyeffects" = "󰚳";
               "zoom-us" = "󰃽";
               "zoom" = "󰃽";
               "polkit-gnome-authentication-agent-1" = "󰌆";
+              "gnome-disks" = "󰋊";
             };
         };
         "backlight"= {
@@ -155,8 +157,6 @@ tooltip label {
           "on-scroll-down"= "light -U 5";
         };
         "battery"= {
-          "on-scroll-up" = "swaybg -i $WALLPAPER_DIR/space.jpg  -m fill > /dev/null";
-          "on-click-right" = "swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill > /dev/null";
           "states"= {
             "good"= 95;
             "warning"= 30;
@@ -216,6 +216,7 @@ tooltip label {
           };
         };
         "cpu" = {
+          "on-click-right" = "swaybg -i $WALLPAPER_DIR/space.jpg  -m fill > /dev/null";
           "interval" = 1;
           "format" = "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}";
           "format-icons" = [
@@ -230,6 +231,7 @@ tooltip label {
           ];
         };
         "network" = {
+          "on-click-right" = "swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill > /dev/null";
           "format-disconnected" = "󰯡 Disconnected";
           "format-ethernet" = "󰒢 ";
           "format-linked" = "󰖪 {essid} (No IP)";

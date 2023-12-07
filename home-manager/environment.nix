@@ -11,9 +11,14 @@
       CLUTTER_BACKEND = "wayland";
       WLR_RENDERER = "vulkan";
 
+      # XDG
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_CACHE_HOME = "$HOME/.cache";
+      XDG_DATA_HOME = "$HOME/.local/.share";
+      XDG_STATE_HOME = "$HOME/.local/.state";
 
       MAKEFLAGES = "-j20";
       HSA_OVERRIDE_GFX_VERSION = "10.3.0";
@@ -27,10 +32,12 @@
       _JAVA_AWT_WM_NONEREPARENTING = "1";
       GDK_BACKEND = "wayland";
 
+      # custom
       WALLPAPER_DIR = "$HOME/Documents/wallpapers";
       DEVELOPER_DIR = "$HOME/Developer";
       BLOG_DIR = "${DEVELOPER_DIR}/blog";
 
+      # nix
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_BROKEN = "1";
     };

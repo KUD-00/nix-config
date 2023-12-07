@@ -16,3 +16,6 @@ some special thing:
 
 - modified keyboard layout a lot
   - use jp layout on us keyboard
+
+## TODOs
+- [ ] how to upload newly built binarys to cachix when doing nixos-rebuild

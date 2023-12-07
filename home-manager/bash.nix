@@ -30,7 +30,7 @@
       gpull = "git pull";
       gs = "git status";
       lsblk = "lsblk -f";
-      hm = "home-manager switch --flake .#$USER@$HOSTNAME";
+      hm = "home-manager switch --flake .#$USER@$HOSTNAME --show-trace --option eval-cache false";
       nb = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
       update = "nix flake update; nb; hm";
       ps = "procs";
@@ -41,7 +41,10 @@
       y = "yazi";
     };
 
+# any better ideas?
     initExtra = ''
+    export CURRENT_NIXOS_SYSTEM=$(readlink -f /nix/var/nix/profiles/system)
+
     function nd () {
       mkdir -p -- "$1" &&
         cd -P -- "$1"

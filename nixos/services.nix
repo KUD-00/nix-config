@@ -49,5 +49,7 @@
     flatpak.enable = true;
 
     gvfs.enable = true;
+
+    upower.enable = true;
   };
 }
