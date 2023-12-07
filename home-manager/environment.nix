@@ -25,7 +25,7 @@
       EDITOR = "nvim";
       NIX_BUILD_CORES = "20";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_QPA_PLATFORM = "wayland;xcb";
+      QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       QT_QPA_PLATFORMTHEME = "qt5ct";
       SDL_VIDEODRIVER = "wayland";

@@ -148,6 +148,7 @@ tooltip label {
               "zoom" = "󰃽";
               "polkit-gnome-authentication-agent-1" = "󰌆";
               "gnome-disks" = "󰋊";
+              "eog" = "";
             };
         };
         "backlight"= {
