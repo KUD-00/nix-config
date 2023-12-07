@@ -106,6 +106,9 @@
     # basic dev
     kitty
 
+    # secret managment
+    inputs.agenix.packages."${system}".default
+
     # FHS
     (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
      pkgs.buildFHSUserEnv (base // {

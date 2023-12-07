@@ -5,6 +5,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+#     autoLogin = {
+#       enable = lib.mkDefault true;
+#       shell = lib.mkDefault "bash";
+#     };
     extraConfig = ''
 monitor=,preferred,auto,1.6
 
