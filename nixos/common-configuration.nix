@@ -156,7 +156,7 @@
     };
   };
 
-  services.gnome3.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
 
   nixpkgs.config.allowBroken = true;

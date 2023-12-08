@@ -64,10 +64,10 @@
       };
     };
 
-    doom-emacs = {
-      enable = true;
-      doomPrivateDir = ../config/doom.d;
-    };
+#     doom-emacs = {
+#       enable = true;
+#       doomPrivateDir = ../config/doom.d;
+#     };
   };
 
   # Nicely reload system units when changing configs
