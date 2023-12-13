@@ -3,7 +3,7 @@
 {
   services = {
     syncthing = {
-      enable = true;
+      enable = false;
       user = "kud";
       configDir = "/home/kud/.config/syncthing";
       settings.folders = {
@@ -52,8 +52,10 @@
 
     upower.enable = true;
 
-    dbus.packages = with pkgs; [
-      gnome.gnome-keyring
-    ];
+    # dbus.packages = with pkgs; [
+    #   gnome.gnome-keyring
+    # ];
+
+    fwupd.enable = true; # a simple daemon allowing you to update some devices' firmware, including UEFI for several machines. 
   };
 }

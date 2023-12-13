@@ -1,4 +1,36 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hostname, ... }:
+
+let
+
+  MikanSpecificConfig = ''
+monitor=,preferred,auto,1.6
+
+bind=SUPER,B,exec,wtype "\\"
+bind=SUPER,U,exec,wtype "_"
+bind=SUPER,V,exec,wtype "|"
+bind=,code:49,exec,wtype -k Escape
+
+bind=,code:121,exec,pamixer -t
+bind=,code:122,exec,pamixer -d 5
+bind=,code:123,exec,pamixer -i 5
+
+bind=,code:232,exec,brightnessctl set 10%-
+bind=,code:233,exec,brightnessctl set 10%+
+
+bind=$mainMod,H,exec,wtype -P left -p left
+bind=$mainMod,J,exec,wtype -P down -p down
+bind=$mainMod,K,exec,wtype -P up -p up
+bind=$mainMod,L,exec,wtype -P right -p right
+  '';
+
+  LainSpecificConfig = ''
+monitor=,preferred,auto,auto
+'';
+
+  specificConfig = if hostname == "Mikan" then MikanSpecificConfig
+                   else if hostname == "Lain" then LainSpecificConfig
+                   else "";
+in 
 
 {
 #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
@@ -10,8 +42,6 @@
 #       shell = lib.mkDefault "bash";
 #     };
     extraConfig = ''
-monitor=,preferred,auto,1.6
-
 env = XCURSOR_SIZE,24
 
 input {
@@ -85,11 +115,10 @@ $altMod=SUPER_ALT
 
 $menu=rofi -show drun
 
-$wallpaper_dir="/home/kud/Documents/wallpapers"
 $screen_file=$HOME/Documents/ScreenShots/screen_shot_$(date + "%Y-%m-%d_%H-%M-%S").png
 
 exec-once=dunst
-exec-once=swaybg -i $(find $wallpaper_dir -type f | shuf -n 1) -m fill
+exec-once=swaybg -i $(find $WALLPAPER_DIR -type f | shuf -n 1) -m fill
 exec-once=waybar
 exec-once=fcitx5 --replace -d
 source=$HOME/.config/hypr/colors
@@ -102,22 +131,6 @@ bind=SUPER_SHIFT, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-co
 
 bind=, Print,      exec, grim $screen_file
 bind=SUPER, S, exec, grim -g "$(slurp)" - | wl-copy -t image/png
-
-bind=SUPER,B,exec,wtype "\\"
-bind=SUPER,U,exec,wtype "_"
-bind=SUPER,V,exec,wtype "|"
-bind=,code:49,exec,wtype -k Escape
-
-bind=,code:121,exec,pamixer -t
-bind=,code:122,exec,pamixer -d 10
-bind=,code:123,exec,pamixer -i 10
-bind=,code:123,exec,pamixer -i 10
-bind=,code:232,exec,brightnessctl set 10%-
-
-bind=$mainMod,H,exec,wtype -P left -p left
-bind=$mainMod,J,exec,wtype -P down -p down
-bind=$mainMod,K,exec,wtype -P up -p up
-bind=$mainMod,L,exec,wtype -P right -p right
 
 bind = $mainMod, Q, exec, kitty
 bind = $mainMod, P, killactive
@@ -182,5 +195,5 @@ $color12 = rgba(73B3D4ee)
 $color13 = rgba(7BC7DDee)
 $color14 = rgba(9CB4E3ee)
 $color15 = rgba(c3dde7ee)
-'';
+'' + specificConfig;
 }

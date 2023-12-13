@@ -2,7 +2,7 @@
   description = "kud's nixos config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -91,6 +91,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs outputs nix-doom-emacs;
+            hostname = "Lain";
           };
           modules = [
             ./home-manager/home.nix
@@ -101,6 +102,7 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs nix-doom-emacs;
+            hostname = "Mikan";
           };
           modules = [
             ./home-manager/home.nix

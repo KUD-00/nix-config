@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, pkgs-stable, nix-doom-emacs, ... }: {
+{ inputs, outputs, lib, config, pkgs, pkgs-stable, nix-doom-emacs, hostname, ... }: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -58,6 +58,7 @@
       userName  = "kud@nix";
       userEmail = "kasa7qi@gmail.com";
       extraConfig = {
+        http.postBuffer = 524288000;
         credential.helper = "${
           pkgs.git.override { withLibsecret = true; }
         }/bin/git-credential-libsecret";
