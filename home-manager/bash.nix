@@ -32,7 +32,7 @@
       lsblk = "lsblk -f";
       hm = "home-manager switch --flake .#$USER@$HOSTNAME --show-trace --option eval-cache false";
       nb = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
-      update = "nix flake update; nb; hm; flatpak update";
+      update = "cd $NIXOS_CONFIG_PATH; nix flake update; nb; hm; flatpak update";
       ps = "procs";
       cache = "sudo nix-collect-garbage; sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d; sudo nix store gc --debug";
       suspend = "sudo systemctl suspend";
@@ -42,6 +42,8 @@
       current-all-packages = "nix-store -q --requisites $CURRENT_NIXOS_SYSTEM";
       where-nix = "current-all-packages | grep -i";
       journalctl = "journalctl -e";
+      drv-difference = "nix profile diff-closures --profile /nix/var/nix/profiles/system | less";
+      timesync = "sudo systemctl restart systemd-timesyncd.service";
     };
 
 # any better ideas?

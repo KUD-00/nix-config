@@ -2,8 +2,6 @@
 
 ![waybar-with-nvim](./waybar-with-nvim.png)
 
-![waybar-with-anime](./waybar-with-anime.png)
-
 forked from Misterio77's [starter](https://github.com/Misterio77/nix-starter-configs), copied a lot from HeinzDev's [config](https://github.com/HeinzDev/Hyprland-dotfiles) and pimeys's [config](https://github.com/pimeys/nixos)
 
 | Category      | Software  |

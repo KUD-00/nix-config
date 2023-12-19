@@ -36,6 +36,7 @@
       WALLPAPER_DIR = "$HOME/Documents/wallpapers";
       DEVELOPER_DIR = "$HOME/Developer";
       BLOG_DIR = "${DEVELOPER_DIR}/blog";
+      NIXOS_CONFIG_PATH = "$HOME/nix-config";
 
       # nix
       NIXPKGS_ALLOW_UNFREE = "1";
