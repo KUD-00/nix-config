@@ -143,12 +143,15 @@ tooltip label {
               "mpv" = "";
               "fcitx5" = "󰌌";
               "fcitx5-configtool" = "󰌌";
+              "fcitx" = "󰌌";
               "easyeffects" = "󰚳";
               "zoom-us" = "󰃽";
               "zoom" = "󰃽";
               "polkit-gnome-authentication-agent-1" = "󰌆";
               "gnome-disks" = "󰋊";
               "eog" = "";
+              "obs" = "󰑋";
+              "com.obsproject.Studio" = "󰑋";
             };
         };
         "backlight"= {

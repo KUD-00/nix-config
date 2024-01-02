@@ -7,7 +7,7 @@
 python3.pkgs.buildPythonApplication rec {
   pname = "marcel";
   version = "0.20.0";
-  format = "setuptools";
+  pyproject = true;
 
   src = fetchFromGitHub {
     owner = "geophile";
@@ -20,9 +20,11 @@ python3.pkgs.buildPythonApplication rec {
     dill
     psutil
     bash
+    setuptools
   ];
 
-  doCheck = false; # cause the tests provided by marcel will read/write $HOME/.local/share/marcel and /tmp and use sudo
+  # The tests use sudo and try to read/write $HOME/.local/share/marcel and /tmp
+  doCheck = false;
 
   postFixup = ''
     substituteInPlace $out/bin/marcel \
@@ -38,6 +40,5 @@ python3.pkgs.buildPythonApplication rec {
     license = licenses.gpl3Only;
     maintainers = with maintainers; [ kud ];
     mainProgram = "marcel";
-    platforms = platforms.unix;
   };
 }

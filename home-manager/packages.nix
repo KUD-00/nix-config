@@ -19,7 +19,8 @@
       cool-retro-term
       zoom-us
       helix
-      fractal
+      # fractal
+      bilibili
       
 # desktop
       rofi-wayland
@@ -58,6 +59,7 @@
 ## fun
       nitch
 ## tool
+      libcamera
       xdg-utils
       powerstat
       libnotify
@@ -116,6 +118,7 @@
       jetbrains-toolbox
       gjs
       gtk4.dev
+      gtk3.dev
       libadwaita
       webkitgtk_6_0
       meson
