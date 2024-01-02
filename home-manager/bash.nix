@@ -32,7 +32,7 @@
       lsblk = "lsblk -f";
       hm = "home-manager switch --flake .#$USER@$HOSTNAME --show-trace --option eval-cache false";
       nb = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
-      update = "cd $NIXOS_CONFIG_PATH; nix flake update; nb; hm; flatpak update";
+      update = "nix flake update; nb; hm; flatpak update";
       ps = "procs";
       cache = "sudo nix-collect-garbage; sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d; sudo nix store gc --debug";
       suspend = "sudo systemctl suspend";
@@ -61,6 +61,10 @@
 
     function cd() {
       builtin cd "$@" && {
+        if [ -d ".git" ]; then
+          echo "Git repository detected. Fetching latest changes..."
+          git fetch --all
+        fi
         if [ -f "shell.nix" ]; then
           echo "Entering nix-shell due to presence of shell.nix"
           nix-shell

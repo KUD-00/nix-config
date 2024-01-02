@@ -13,6 +13,8 @@
     pkgs.fcitx5-pinyin-moegirl
   ];
 
+  services.tlp.enable = true;
+
   services.xremap = {
     userName = "kud";
     serviceMode = "user";
