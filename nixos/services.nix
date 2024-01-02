@@ -3,12 +3,19 @@
 {
   services = {
     syncthing = {
-      enable = false;
+      enable = true;
       user = "kud";
       configDir = "/home/kud/.config/syncthing";
       settings.folders = {
         "Wallpapers" = {
           path = "/home/kud/Documents/wallpapers";
+          devices = [
+            "Mikan"
+            "Lain"
+          ];
+        };
+        "Books" = {
+          path = "/home/kud/Documents/READ_NOW";
           devices = [
             "Mikan"
             "Lain"
