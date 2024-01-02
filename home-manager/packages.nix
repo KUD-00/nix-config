@@ -59,6 +59,7 @@
 ## fun
       nitch
 ## tool
+      pstree
       libcamera
       xdg-utils
       powerstat

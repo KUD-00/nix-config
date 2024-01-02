@@ -42,6 +42,8 @@
       current-all-packages = "nix-store -q --requisites $CURRENT_NIXOS_SYSTEM";
       where-nix = "current-all-packages | grep -i";
       journalctl = "journalctl -e";
+      drv-difference = "nix profile diff-closures --profile /nix/var/nix/profiles/system | less";
+      timesync = "sudo systemctl restart systemd-timesyncd.service";
     };
 
 # any better ideas?
@@ -59,6 +61,10 @@
 
     function cd() {
       builtin cd "$@" && {
+        if [ -d ".git" ]; then
+          echo "Git repository detected. Fetching latest changes..."
+          git fetch --all
+        fi
         if [ -f "shell.nix" ]; then
           echo "Entering nix-shell due to presence of shell.nix"
           nix-shell
