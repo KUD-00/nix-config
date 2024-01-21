@@ -64,6 +64,7 @@
         if [ -d ".git" ]; then
           echo "Git repository detected. Fetching latest changes..."
           git fetch --all
+          echo "!! remember to git pull !!"
         fi
         if [ -f "shell.nix" ]; then
           echo "Entering nix-shell due to presence of shell.nix"

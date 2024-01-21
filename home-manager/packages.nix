@@ -5,6 +5,10 @@
 
   home.packages = (with pkgs; [
 # apps
+      amberol
+      freac
+      tagger
+      g4music
       cpu-x
       mission-center
       qq
@@ -48,7 +52,7 @@
       corepack_21
       nodejs_21
       zulu17
-      julia_18
+      # julia
       python3
       python311Packages.pip
       python311Packages.venvShellHook
@@ -59,6 +63,8 @@
 ## fun
       nitch
 ## tool
+      soundconverter
+      kdiskmark
       pstree
       libcamera
       xdg-utils
@@ -116,6 +122,7 @@
       edk2
 
 # dev
+      ninja
       jetbrains-toolbox
       gjs
       gtk4.dev

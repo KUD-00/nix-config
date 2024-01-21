@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hostname, ... }:
 
 {
     programs.waybar = {
@@ -110,6 +110,7 @@ tooltip label {
           "custom/weather"
           "battery"
           "hyprland/workspaces"
+        ] ++ lib.optionals (hostname == "Mikan") [
           "custom/acpi-performance"
           "custom/acpi-battery"
         ];
@@ -118,8 +119,6 @@ tooltip label {
         ];
         modules-right = [
           "tray"
-          # "privacy"
-          # "custom/media"
           "pulseaudio"
           "memory"
           "cpu"
@@ -152,6 +151,7 @@ tooltip label {
               "eog" = "";
               "obs" = "󰑋";
               "com.obsproject.Studio" = "󰑋";
+              "g4music" = "󰌳";
             };
         };
         "backlight"= {
@@ -188,13 +188,6 @@ tooltip label {
           "format"="󱈏 B";
           "on-click" = "bash -c '~/Developer/scripts/acpi-toggle.sh battery'";
           "tooltip" = false;
-        };
-        "custom/media"= {
-          "max-length"= 20;
-          "format"= "  ";
-          "return-type"= "json";
-          "on-click"= "playerctl play-pause";
-          "spacing" = 5;
         };
         "pulseaudio" = {
           "scroll-step" = 1;
@@ -242,28 +235,6 @@ tooltip label {
           "format-wifi" = "󰖩 {essid}";
           "interval" = 1;
           "tooltip" = false;
-        };
-        "privacy"= {
-          "icon-spacing"= 4;
-          "icon-size"= 18;
-          "transition-duration"= 250;
-          "modules"= [
-          {
-            "type"= "screenshare";
-            "tooltip"= true;
-            "tooltip-icon-size"= 24;
-          }
-          {
-            "type"= "audio-out";
-            "tooltip"= true;
-            "tooltip-icon-size"= 24;
-          }
-          {
-            "type"= "audio-in";
-            "tooltip"= true;
-            "tooltip-icon-size"= 24;
-          }
-          ];
         };
         "tray" = {
           "icon-size" = 15;

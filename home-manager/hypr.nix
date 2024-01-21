@@ -1,9 +1,8 @@
 { config, lib, pkgs, hostname, ... }:
 
 let
-
   MikanSpecificConfig = ''
-monitor=,preferred,auto,1.6
+monitor=,preferred,auto,2
 
 bind=SUPER,B,exec,wtype "\\"
 bind=SUPER,U,exec,wtype "_"
@@ -30,8 +29,8 @@ monitor=,preferred,auto,auto
   specificConfig = if hostname == "Mikan" then MikanSpecificConfig
                    else if hostname == "Lain" then LainSpecificConfig
                    else "";
-in 
 
+in 
 {
 #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
@@ -172,7 +171,7 @@ bind = $mainMod, mouse_up, workspace, e-1
 
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
-'';
+'' + specificConfig;
 };
 
   home.file.".config/hypr/colors".text = ''
@@ -195,5 +194,5 @@ $color12 = rgba(73B3D4ee)
 $color13 = rgba(7BC7DDee)
 $color14 = rgba(9CB4E3ee)
 $color15 = rgba(c3dde7ee)
-'' + specificConfig;
+'';
 }
