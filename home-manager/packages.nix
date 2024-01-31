@@ -5,6 +5,7 @@
 
   home.packages = (with pkgs; [
 # apps
+      foliate
       amberol
       freac
       tagger
@@ -23,9 +24,10 @@
       cool-retro-term
       zoom-us
       helix
-      # fractal
+      citra-canary
+# fractal
       bilibili
-      
+
 # desktop
       rofi-wayland
       wev # test input event
@@ -52,7 +54,7 @@
       corepack_21
       nodejs_21
       zulu17
-      # julia
+# julia
       python3
       python311Packages.pip
       python311Packages.venvShellHook
@@ -63,6 +65,8 @@
 ## fun
       nitch
 ## tool
+      wine64
+      winetricks
       soundconverter
       kdiskmark
       pstree
@@ -156,14 +160,14 @@
       nix-index
 
 ## add some gnome packages
-  ]) ++ (with pkgs.gnome; [ 
-    gnome-keyring
-    gnome-disk-utility
-    nautilus
-    zenity
-    gnome-tweaks
-    eog
-    gvfs
-    dconf-editor
-  ]);
+      ]) ++ (with pkgs.gnome; [ 
+        gnome-keyring
+        gnome-disk-utility
+        nautilus
+        zenity
+        gnome-tweaks
+        eog
+        gvfs
+        dconf-editor
+      ]);
 }

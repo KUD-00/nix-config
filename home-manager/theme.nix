@@ -10,8 +10,8 @@
     };
 
     theme = {
-      name = "Tokyonight-Dark-B-LB";
-      package = pkgs.tokyo-night-gtk;
+      name = "Ant";
+      package = pkgs.ant-theme;
     };
 
     cursorTheme = {
