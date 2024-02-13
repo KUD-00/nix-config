@@ -7,8 +7,8 @@
   ];
 
   boot.loader = {
+    timeout = 0;
     efi.canTouchEfiVariables = true;
-
     systemd-boot = { 
       enable = true;
       configurationLimit = 5;
@@ -121,6 +121,7 @@
          (base.targetPkgs pkgs) ++ [
            pkg-config
            ncurses
+           fuse3
            # 如果你的 FHS 程序还有其他依赖，把它们添加在这里
          ]
        );

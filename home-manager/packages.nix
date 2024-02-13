@@ -1,33 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./packages/go.nix
+    ./packages/apps.nix
+  ];
+
   programs.atuin.enable = true;
 
   home.packages = (with pkgs; [
-# apps
-      foliate
-      amberol
-      freac
-      tagger
-      g4music
-      cpu-x
-      mission-center
-      qq
-      mpv
-      steam
-      obs-studio
-      firefox
-      slack
-      calibre
-      gitkraken
-      zulip
-      cool-retro-term
-      zoom-us
-      helix
-      citra-canary
-# fractal
-      bilibili
-
 # desktop
       rofi-wayland
       wev # test input event
@@ -44,27 +25,27 @@
       fcitx5-chinese-addons
       tracker
       openrgb
-      libsForQt5.polkit-kde-agent # seems not working
       polkit_gnome
 
 # for nvim
       luajitPackages.luarocks-nix
       php83Packages.composer
       php
-      corepack_21
-      nodejs_21
+      corepack_latest
+      nodePackages_latest.nodejs
       zulu17
-# julia
+
       python3
       python311Packages.pip
       python311Packages.venvShellHook
 
 # cli
-## app
+      v2ray
+      v2raya
+      dae
+      clash-verge
       yazi
-## fun
       nitch
-## tool
       wine64
       winetricks
       soundconverter
@@ -106,15 +87,12 @@
       openssl
       thttpd
 
-### archives
       zip
       xz
       unzip
       p7zip
       unrar
 
-#TODO: test to remove these
-## For Docker-OSX
       qemu
       libvirt
       dnsmasq
@@ -141,22 +119,20 @@
       strace
       bcc
 
-## kubernetes
       kubernetes
       kubectl
       kind
       minikube
       kubectx
       docker
-## C
+
       gnumake
       gccgo13
       libcap.dev
 
-## rust
       rustc
       cargo
-## nix
+
       nix-index
 
 ## add some gnome packages

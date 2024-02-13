@@ -3,6 +3,7 @@
 let
   MikanSpecificConfig = ''
 monitor=,preferred,auto,2
+monitor=HDMI-A-1,preferred,auto,2,transform,3
 
 bind=SUPER,B,exec,wtype "\\"
 bind=SUPER,U,exec,wtype "_"
