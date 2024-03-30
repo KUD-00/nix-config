@@ -106,10 +106,6 @@ gestures {
   workspace_swipe = false
 }
 
-device:epic-mouse-v1 {
-  sensitivity = -0.5
-}
-
 $mainMod = ALT
 $altMod=SUPER_ALT
 

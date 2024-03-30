@@ -43,7 +43,7 @@
       v2ray
       v2raya
       dae
-      clash-verge
+      innoextract
       yazi
       nitch
       wine64
@@ -69,7 +69,7 @@
       du-dust
       duf
       gh
-      nvtop-amd
+      nvtopPackages.amd
       amdgpu_top
       jq
       glow

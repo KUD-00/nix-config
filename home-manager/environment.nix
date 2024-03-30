@@ -12,8 +12,8 @@
       WLR_RENDERER = "vulkan";
 
       # XDG
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
+      # XDG_CURRENT_DESKTOP = "Hyprland";
+      # XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_CONFIG_HOME = "$HOME/.config";
       XDG_CACHE_HOME = "$HOME/.cache";

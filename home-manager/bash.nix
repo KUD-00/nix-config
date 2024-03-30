@@ -44,14 +44,12 @@
       journalctl = "journalctl -e";
       drv-difference = "nix profile diff-closures --profile /nix/var/nix/profiles/system | less";
       timesync = "sudo systemctl restart systemd-timesyncd.service";
+      blog = "builtin cd $BLOG_DIR; pnpm dev";
     };
 
 # any better ideas?
     initExtra = ''
     export CURRENT_NIXOS_SYSTEM=$(readlink -f /nix/var/nix/profiles/system)
-    export http_proxy="http://127.0.0.1:20171"
-    export https_proxy="http://127.0.0.1:20171"
-    export all_proxy="socks5://127.0.0.1:20170"
 
     function who-depends-on () {
       nix-store --query --referrers $(where-nix $1)

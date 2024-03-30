@@ -12,6 +12,10 @@
       slack
       calibre
       zoom-us
-      citra-canary
+      pavucontrol
+      qpwgraph
+      # google-chrome
+      lapce
+      vscode
   ]);
 }

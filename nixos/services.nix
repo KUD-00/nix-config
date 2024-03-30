@@ -36,6 +36,12 @@
       };
     };
 
+    xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
+
     blueman.enable = true;
 
     pipewire = {
@@ -59,6 +65,7 @@
 
     upower.enable = true;
 
+    v2raya.enable = true;
     # dbus.packages = with pkgs; [
     #   gnome.gnome-keyring
     # ];

@@ -7,8 +7,8 @@
     vimAlias = true;
   };
 
-  programs.neovim.plugins = [
-    pkgs.vimPlugins.nvim-tree-lua
-    pkgs.vimPlugins.nvim-treesitter-parsers.v
+  programs.neovim.plugins = with pkgs.vimPlugins; [
+    nvim-tree-lua
+    nvim-treesitter-parsers.v
   ];
 }

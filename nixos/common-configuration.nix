@@ -11,7 +11,7 @@
     efi.canTouchEfiVariables = true;
     systemd-boot = { 
       enable = true;
-      configurationLimit = 5;
+      configurationLimit = 3;
     };
 
   };
@@ -19,7 +19,7 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
-    initrd.kernelModules = [ "amdgpu" "acpi_call" ];
+    initrd.kernelModules = [ "acpi_call" ];
   };
 
   nix.gc = {
@@ -94,14 +94,12 @@
     initialPassword = "seki123";
   };
 
-
   environment.systemPackages = with pkgs; [
     # custom packages(for nixpkgs maintain)
     marcel
 
     # basic tools
     bluez
-    qpwgraph
 
     # basic dev
     kitty
@@ -109,6 +107,7 @@
     # secret managment
     inputs.agenix.packages."${system}".default
 
+    gnomeExtensions.unite
     # FHS
     (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
      pkgs.buildFHSUserEnv (base // {
@@ -156,6 +155,24 @@
       };
     };
   };
+
+  environment.gnome.excludePackages = (with pkgs; [
+      gnome-photos
+      gnome-tour
+  ]) ++ (with pkgs.gnome; [
+    cheese # webcam tool
+    gnome-music
+    gnome-terminal
+    epiphany # web browser
+    geary # email reader
+    evince # document viewer
+    gnome-characters
+    totem # video player
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+  ]);
 
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
