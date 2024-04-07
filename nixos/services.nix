@@ -1,6 +1,10 @@
 { inputs, config, lib, pkgs,  ... }:
 
 {
+  imports = [
+    # ./kubernetes.nix
+  ];
+
   services = {
     syncthing = {
       enable = true;

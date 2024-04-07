@@ -45,6 +45,9 @@
       drv-difference = "nix profile diff-closures --profile /nix/var/nix/profiles/system | less";
       timesync = "sudo systemctl restart systemd-timesyncd.service";
       blog = "builtin cd $BLOG_DIR; pnpm dev";
+      tp = "terraform plan";
+      ta = "terraform apply";
+      kga = "kubectl get all";
     };
 
 # any better ideas?

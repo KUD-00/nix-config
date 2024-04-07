@@ -125,6 +125,8 @@
       minikube
       kubectx
       docker
+      awscli2
+      terraform
 
       gnumake
       gccgo13
