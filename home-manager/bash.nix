@@ -30,7 +30,7 @@
       gpull = "git pull";
       gs = "git status";
       lsblk = "lsblk -f";
-      hm = "home-manager switch --flake .#$USER@$HOSTNAME --show-trace --option eval-cache false";
+      hm = "home-manager switch -b backup --flake .#$USER@$HOSTNAME --show-trace --option eval-cache false";
       nb = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
       update = "nix flake update; nb; hm; flatpak update";
       ps = "procs";
@@ -48,6 +48,10 @@
       tp = "terraform plan";
       ta = "terraform apply";
       kga = "kubectl get all";
+      testpod = "kubectl run -it --rm --image=busybox testpod -- sh";
+      kcg = "kubectl config get-contexts";
+      k = "kubectl";
+      p3 = "python3";
     };
 
 # any better ideas?

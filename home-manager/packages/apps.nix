@@ -10,12 +10,14 @@
       obs-studio
       firefox
       slack
-      calibre
+      # calibre
       zoom-us
       pavucontrol
       qpwgraph
-      # google-chrome
+      google-chrome
+      chromium
       lapce
       vscode
+      freac
   ]);
 }

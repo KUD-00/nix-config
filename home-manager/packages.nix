@@ -4,35 +4,18 @@
   imports = [
     ./packages/go.nix
     ./packages/apps.nix
+    ./packages/nodejs.nix
+    ./packages/hyprland.nix
   ];
 
   programs.atuin.enable = true;
 
   home.packages = (with pkgs; [
-# desktop
-      rofi-wayland
-      wev # test input event
-      wtype
-      swaybg
-      waybar
-      wttrbar # weather for waybar
-      wl-clipboard
-      cliphist
-      wireplumber
-      grim
-      indicator-sound-switcher # seems not working
-      slurp # select a region of screen in wayland
-      fcitx5-chinese-addons
-      tracker
-      openrgb
-      polkit_gnome
 
 # for nvim
       luajitPackages.luarocks-nix
       php83Packages.composer
       php
-      corepack_latest
-      nodePackages_latest.nodejs
       zulu17
 
       python3
@@ -102,13 +85,16 @@
       bison
       iptables
       edk2
+      exiftool
 
 # dev
+      cmake
+      gjs
       ninja
       jetbrains-toolbox
       gjs
-      gtk4.dev
-      gtk3.dev
+      gtk4
+      gtk3
       libadwaita
       webkitgtk_6_0
       meson
