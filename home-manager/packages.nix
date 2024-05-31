@@ -6,6 +6,7 @@
     ./packages/apps.nix
     ./packages/nodejs.nix
     ./packages/hyprland.nix
+    ./packages/docker.nix
   ];
 
   programs.atuin.enable = true;
@@ -93,8 +94,6 @@
       ninja
       jetbrains-toolbox
       gjs
-      gtk4
-      gtk3
       libadwaita
       webkitgtk_6_0
       meson
@@ -105,12 +104,6 @@
       strace
       bcc
 
-      kubernetes
-      kubectl
-      kind
-      minikube
-      kubectx
-      docker
       awscli2
       terraform
 

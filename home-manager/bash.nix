@@ -57,6 +57,7 @@
 # any better ideas?
     initExtra = ''
     export CURRENT_NIXOS_SYSTEM=$(readlink -f /nix/var/nix/profiles/system)
+    export PATH="$(go env GOPATH)/bin:$PATH"
 
     function who-depends-on () {
       nix-store --query --referrers $(where-nix $1)
