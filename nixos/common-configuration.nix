@@ -71,10 +71,7 @@
   hardware = {
     pulseaudio.enable = false;
     bluetooth.enable = true;
-    opengl = {
-      driSupport = true;
-      driSupport32Bit = true;   # For 32 bit applications
-
+    graphics = {
       extraPackages = with pkgs; [
         rocm-opencl-icd
         rocm-opencl-runtime

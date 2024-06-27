@@ -19,5 +19,6 @@
       lapce
       vscode
       freac
+      # wechat-uos
   ]);
 }

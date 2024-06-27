@@ -29,12 +29,13 @@
       gpush = "git push";
       gpull = "git pull";
       gs = "git status";
+      gc = "git checkout";
       lsblk = "lsblk -f";
       hm = "home-manager switch -b backup --flake .#$USER@$HOSTNAME --show-trace --option eval-cache false";
       nb = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
-      update = "nix flake update; nb; hm; flatpak update";
+      update = "nix flake update; nb; hm; flatpak update; cache";
       ps = "procs";
-      cache = "sudo nix-collect-garbage; sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d; sudo nix store gc --debug";
+      cache = "docker system prune -a; sudo nix-collect-garbage; sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d; sudo nix store gc --debug";
       suspend = "sudo systemctl suspend";
       nix-history = "sudo nix profile history --profile /nix/var/nix/profiles/system";
       foliate4 = "flatpak run com.github.johnfactotum.Foliate";
@@ -48,10 +49,12 @@
       tp = "terraform plan";
       ta = "terraform apply";
       kga = "kubectl get all";
+      kgj = "kubectl get jobs";
       testpod = "kubectl run -it --rm --image=busybox testpod -- sh";
       kcg = "kubectl config get-contexts";
       k = "kubectl";
       p3 = "python3";
+      gpa = "git push --all origin";
     };
 
 # any better ideas?
