@@ -40,8 +40,6 @@
 
   time.timeZone = "Asia/Tokyo";
 
-  sound.enable = true;
-
   security.rtkit.enable = true;
 
   security.polkit.enable = true;
@@ -73,8 +71,6 @@
     bluetooth.enable = true;
     graphics = {
       extraPackages = with pkgs; [
-        rocm-opencl-icd
-        rocm-opencl-runtime
         amdvlk
       ];
 
@@ -153,18 +149,9 @@
     };
   };
 
-  environment.gnome.excludePackages = (with pkgs; [
-      gnome-photos
-      gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
+  environment.gnome.excludePackages = (with pkgs.gnome; [
     gnome-music
-    gnome-terminal
-    epiphany # web browser
-    geary # email reader
-    evince # document viewer
     gnome-characters
-    totem # video player
     tali # poker game
     iagno # go game
     hitori # sudoku game

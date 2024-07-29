@@ -19,6 +19,8 @@
       lapce
       vscode
       freac
+      beekeeper-studio
+      zed-editor
       # wechat-uos
   ]);
 }

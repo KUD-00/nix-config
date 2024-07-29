@@ -12,6 +12,8 @@
   programs.atuin.enable = true;
 
   home.packages = (with pkgs; [
+      ffmpeg_7
+      yt-dlp-light
 
 # for nvim
       luajitPackages.luarocks-nix
@@ -26,7 +28,7 @@
 # cli
       v2ray
       v2raya
-      dae
+      # dae
       innoextract
       yazi
       nitch
@@ -89,6 +91,7 @@
       exiftool
 
 # dev
+      imhex
       cmake
       gjs
       ninja
@@ -117,7 +120,6 @@
       nix-index
 
 ## add some gnome packages
-      ]) ++ (with pkgs.gnome; [ 
         gnome-keyring
         gnome-disk-utility
         nautilus
@@ -125,6 +127,6 @@
         gnome-tweaks
         eog
         gvfs
-        dconf-editor
-      ]);
+        # dconf-editor
+  ]);
 }

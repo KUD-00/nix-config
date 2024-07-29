@@ -1,4 +1,4 @@
-{ inputs, outputs, lib, config, pkgs, pkgs-stable, nix-doom-emacs, hostname, ... }: {
+{ inputs, outputs, lib, config, pkgs, pkgs-stable, pkgs-master, nix-doom-emacs, hostname, ... }: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
@@ -15,6 +15,7 @@
     ./starship.nix
     ./packages.nix
 #    ./packages-stable.nix
+    ./package-master.nix
     ./nvim.nix
     ./dunst.nix
     ./theme.nix

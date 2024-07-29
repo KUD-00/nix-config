@@ -20,6 +20,15 @@
     };
   };
 
+  hardware = {
+    graphics = {
+      extraPackages = with pkgs; [
+        rocm-opencl-icd
+        rocm-opencl-runtime
+      ];
+    };
+  };
+
   networking.hostName = "Lain";
 
   # Before changing this value read the documentation for this option
