@@ -59,7 +59,6 @@
 
   virtualisation.docker = {
     enable = true;
-    extraOptions = "--data-root /develop/docker";
     rootless = {
       enable = true;
       setSocketVariable = true;

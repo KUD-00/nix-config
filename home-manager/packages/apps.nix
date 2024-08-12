@@ -23,5 +23,6 @@
       zed-editor
       android-studio
       # wechat-uos
+      unityhub
   ]);
 }

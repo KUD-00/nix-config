@@ -12,17 +12,7 @@
       grep = "grep -i --color=auto";
       du = "dust";
       df = "duf";
-      rocm = "sudo docker run \
-              -it \
-              --network=host \
-              --device=/dev/kfd \
-              --device=/dev/dri \
-              --ipc=host \
-              --shm-size 16G \
-              --group-add video \
-              --cap-add=SYS_PTRACE \
-              --security-opt seccomp=unconfined \
-              -v $HOME/dockerx:/dockerx";
+      rocm = "sudo docker run -it --network=host --device=/dev/kfd --device=/dev/dri --ipc=host --shm-size 16G --group-add video --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v /develop/rocm:/rocm -w /rocm rocm/pytorch";
       gaa = "git add -A";
       gba = "git branch -vv --all";
       gcm = "git commit -m ";
