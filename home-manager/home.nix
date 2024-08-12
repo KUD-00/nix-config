@@ -15,7 +15,7 @@
     ./starship.nix
     ./packages.nix
 #    ./packages-stable.nix
-    ./package-master.nix
+#    ./packages-master.nix
     ./nvim.nix
     ./dunst.nix
     ./theme.nix

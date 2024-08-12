@@ -14,6 +14,7 @@
   home.packages = (with pkgs; [
       ffmpeg_7
       yt-dlp-light
+      ngrok
 
 # for nvim
       luajitPackages.luarocks-nix
@@ -26,6 +27,8 @@
       python311Packages.venvShellHook
 
 # cli
+      android-tools
+      cloc
       v2ray
       v2raya
       # dae

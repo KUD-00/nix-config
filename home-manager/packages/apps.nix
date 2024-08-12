@@ -21,6 +21,7 @@
       freac
       beekeeper-studio
       zed-editor
+      android-studio
       # wechat-uos
   ]);
 }

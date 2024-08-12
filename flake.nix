@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +19,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-master, home-manager, nix-doom-emacs, xremap-flake, nixos-hardware, berberman, agenix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, xremap-flake, nixos-hardware, berberman, agenix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [

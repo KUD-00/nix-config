@@ -5,5 +5,6 @@
     bun
     corepack_latest
     nodePackages_latest.nodejs
+    nodePackages_latest.wrangler
   ]);
 }
