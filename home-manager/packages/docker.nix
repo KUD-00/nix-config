@@ -8,5 +8,6 @@
     kind
     kubectx
     kubernetes-helm
+    minikube
   ]);
 }

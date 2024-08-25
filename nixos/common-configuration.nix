@@ -65,6 +65,26 @@
     };
   };
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "kud" ];
+
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [(pkgs.OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+            }).fd];
+      };
+    };
+  };
+
   hardware = {
     pulseaudio.enable = false;
     bluetooth.enable = true;
@@ -82,7 +102,7 @@
 
   users.users.kud = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     initialPassword = "seki123";
   };
 
@@ -148,14 +168,29 @@
     };
   };
 
-  environment.gnome.excludePackages = (with pkgs.gnome; [
-    gnome-music
-    gnome-characters
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-  ]);
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome.gnome-music
+    gnome.gnome-characters
+    gnome.tali # poker game
+    gnome.iagno # go game
+    gnome.hitori # sudoku game
+    gnome.atomix # puzzle game
+    gnome.gnome-software
+    gnome.gnome-contacts
+    gnome.gnome-weather
+    gnome.gnome-clocks
+    gnome.gnome-shell
+    gnome.gnome-sudoku
+    gnome.gnome-maps
+
+    gnome-calendar
+    simple-scan
+    gnome-user-share
+    yelp
+    gnome-text-editor
+    gnome-connections
+    epiphany
+    ]);
 
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;

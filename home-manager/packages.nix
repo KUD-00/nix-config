@@ -27,7 +27,10 @@
       python311Packages.venvShellHook
 
 # cli
+      variety
       android-tools
+      docker-machine-kvm2
+      virtualbox
       cloc
       v2ray
       v2raya
@@ -37,7 +40,6 @@
       nitch
       wine64
       winetricks
-      soundconverter
       kdiskmark
       pstree
       libcamera

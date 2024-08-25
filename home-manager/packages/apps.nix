@@ -10,19 +10,16 @@
       obs-studio
       firefox
       slack
-      # calibre
+      calibre
       zoom-us
       pavucontrol
       qpwgraph
       google-chrome
       chromium
-      lapce
       vscode
-      freac
       beekeeper-studio
       zed-editor
       android-studio
-      # wechat-uos
       unityhub
   ]);
 }
