@@ -5,6 +5,11 @@
     # ./kubernetes.nix
   ];
 
+  sops.defaultSopsFile = ../secrets.enc.yaml;
+  sops.age.keyFile = "~/.config/sops/age/keys.txt";
+
+  sops.secrets.cloudflared_creds = {};
+
   services = {
     syncthing = {
       enable = true;
@@ -75,5 +80,22 @@
     # ];
 
     fwupd.enable = true; # a simple daemon allowing you to update some devices' firmware, including UEFI for several machines. 
+
+    cloudflared = {
+      enable = true;
+      tunnels = {
+        "f522e259-6f76-4b1b-9246-aac295d83a6b" = {
+          credentialsFile = "${config.sops.secrets.cloudflared-creds.path}";
+          ingress = {
+            "*.domain1.com" = {
+              service = "http://localhost:80";
+              path = "/*.(jpg|png|css|js)";
+            };
+            "*.domain2.com" = "http://localhost:80";
+          };
+          default = "http_status:404";
+        };
+      };
+    };
   };
 }

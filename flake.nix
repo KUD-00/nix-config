@@ -12,6 +12,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     agenix.url = "github:ryantm/agenix";
+    sops-nix.url = "github:Mic92/sops-nix";
 
     berberman = {
       url = "github:berberman/flakes";
@@ -19,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, xremap-flake, nixos-hardware, berberman, agenix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -64,6 +65,7 @@
             })
             ./nixos/lain-configuration.nix
             agenix.nixosModules.default
+            sops-nix.nixosModules.sops
           ];
         };
 
@@ -80,6 +82,7 @@
             ./nixos/mikan-configuration.nix
             nixos-hardware.nixosModules.lenovo-ideapad-slim-5 
             agenix.nixosModules.default
+            sops-nix.nixosModules.sops
           ];
         };
       };

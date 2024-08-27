@@ -118,6 +118,7 @@
 
     # secret managment
     inputs.agenix.packages."${system}".default
+    sops
 
     gnomeExtensions.unite
     # FHS
@@ -169,19 +170,19 @@
   };
 
   environment.gnome.excludePackages = (with pkgs; [
-    gnome.gnome-music
-    gnome.gnome-characters
-    gnome.tali # poker game
-    gnome.iagno # go game
-    gnome.hitori # sudoku game
-    gnome.atomix # puzzle game
-    gnome.gnome-software
-    gnome.gnome-contacts
-    gnome.gnome-weather
-    gnome.gnome-clocks
+    gnome-music
+    gnome-characters
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+    gnome-software
+    gnome-contacts
+    gnome-weather
+    gnome-clocks
     gnome.gnome-shell
-    gnome.gnome-sudoku
-    gnome.gnome-maps
+    gnome-sudoku
+    gnome-maps
 
     gnome-calendar
     simple-scan

@@ -28,6 +28,8 @@
 
 # cli
       variety
+      cloudflared
+      age
       android-tools
       docker-machine-kvm2
       virtualbox
