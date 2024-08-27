@@ -35,22 +35,6 @@
     data-root = "/develop/docker";
   };
 
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [(pkgs.OVMF.override {
-            secureBoot = true;
-            tpmSupport = true;
-            }).fd];
-      };
-    };
-  };
-
 # Before changing this value read the documentation for this option
 # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05";
