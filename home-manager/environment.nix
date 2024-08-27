@@ -38,6 +38,8 @@
       BLOG_DIR = "${DEVELOPER_DIR}/blog";
       NIXOS_CONFIG_PATH = "$HOME/nix-config";
 
+      MINIKUBE_HOME="/develop/minikube";
+
       # nix
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_BROKEN = "1";

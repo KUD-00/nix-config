@@ -28,13 +28,11 @@
 
 # cli
       variety
-<<<<<<< HEAD
       cloudflared
+      buf
       age
-=======
       libvirt
       vagrant
->>>>>>> 94215e3 (update)
       android-tools
       docker-machine-kvm2
       virtualbox
