@@ -14,7 +14,7 @@
   home.packages = (with pkgs; [
       ffmpeg_7
       yt-dlp-light
-      ngrok
+      # ngrok
 
 # for nvim
       luajitPackages.luarocks-nix
@@ -28,8 +28,13 @@
 
 # cli
       variety
+<<<<<<< HEAD
       cloudflared
       age
+=======
+      libvirt
+      vagrant
+>>>>>>> 94215e3 (update)
       android-tools
       docker-machine-kvm2
       virtualbox
