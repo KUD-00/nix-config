@@ -3,8 +3,8 @@
 {
   home.packages = (with pkgs; [
     bun
-    corepack_latest
     nodePackages_latest.nodejs
+    nodePackages_latest.pnpm
     nodePackages_latest.wrangler
   ]);
 }

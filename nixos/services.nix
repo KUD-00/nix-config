@@ -34,6 +34,13 @@
             "Lain"
           ];
         };
+        "Sharing" = {
+          path = "/home/kud/Documents/sharing";
+          devices = [
+            "Mikan"
+            "Lain"
+          ];
+        };
       };
       settings.devices = {
         Mikan = {
