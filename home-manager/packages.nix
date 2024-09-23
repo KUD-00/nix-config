@@ -28,6 +28,7 @@
 
 # cli
       variety
+      go-task
       cloudflared
       buf
       age

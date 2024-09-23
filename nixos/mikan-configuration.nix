@@ -6,12 +6,6 @@
     ./common-configuration.nix
     xremap-flake.nixosModules.default
   ];
-  
-#TODO: move this to common-configuration
-  environment.systemPackages = [
-    inputs.home-manager.packages.${pkgs.system}.default
-    pkgs.fcitx5-pinyin-moegirl
-  ];
 
   # services.tlp.enable = true;
 

@@ -38,7 +38,7 @@
       blog = "builtin cd $BLOG_DIR; pnpm dev";
       tp = "terraform plan";
       ta = "terraform apply";
-      kga = "kubectl get all";
+      kga = "kubectl get pods --all-namespaces";
       kgj = "kubectl get jobs";
       testpod = "kubectl run -it --rm --image=busybox testpod -- sh";
       kcg = "kubectl config get-contexts";

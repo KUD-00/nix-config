@@ -5,14 +5,14 @@
     # ./kubernetes.nix
   ];
 
-  sops.defaultSopsFile = ../secrets.enc.yaml;
-  sops.age.keyFile = "/home/kud/.config/sops/age/keys.txt";
+  # sops.defaultSopsFile = ../secrets.enc.yaml;
+  # sops.age.keyFile = "/home/kud/.config/sops/age/keys.txt";
 
-  sops.secrets.cloudflared_creds = {
-    owner = "cloudflared";
-    group = "cloudflared";
-    mode = "0400";
-  };
+  # sops.secrets.cloudflared_creds = {
+  #   owner = "cloudflared";
+  #   group = "cloudflared";
+  #   mode = "0400";
+  # };
 
   services = {
     syncthing = {

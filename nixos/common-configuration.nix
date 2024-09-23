@@ -45,9 +45,9 @@
   security.polkit.enable = true;
 
   i18n = {
-    defaultLocale = "en_US.UTF-8";
     inputMethod = {
-      enabled = "fcitx5";
+      type = "fcitx5";
+      enable = true;
       fcitx5.addons = with pkgs; [
         fcitx5-rime
         fcitx5-chinese-addons
@@ -149,9 +149,9 @@
     dev.enable = true;
   };
 
-  programs = {
-    hyprland.enable = true;
-  };
+  # programs = {
+  #   hyprland.enable = true;
+  # };
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
@@ -176,11 +176,11 @@
     iagno # go game
     hitori # sudoku game
     atomix # puzzle game
+    gnome-shell
     gnome-software
     gnome-contacts
     gnome-weather
     gnome-clocks
-    gnome.gnome-shell
     gnome-sudoku
     gnome-maps
 
