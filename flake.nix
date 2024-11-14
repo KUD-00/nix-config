@@ -7,7 +7,6 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     xremap-flake.url = "github:xremap/nix-flake";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -20,7 +19,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -93,7 +92,7 @@
         "kud@Lain" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs nix-doom-emacs;
+            inherit inputs outputs;
             hostname = "Lain";
           };
           modules = [
@@ -104,7 +103,7 @@
         "kud@Mikan" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs nix-doom-emacs;
+            inherit inputs outputs;
             hostname = "Mikan";
           };
           modules = [

@@ -7,6 +7,11 @@
     xremap-flake.nixosModules.default
   ];
 
+  boot.loader = {
+    systemd-boot = { 
+      configurationLimit = 3;
+    };
+  };
   # services.tlp.enable = true;
 
   services.xremap = {

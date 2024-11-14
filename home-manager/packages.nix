@@ -12,13 +12,12 @@
   programs.atuin.enable = true;
 
   home.packages = (with pkgs; [
-      ffmpeg_7
       yt-dlp-light
-      # ngrok
+      ngrok
 
 # for nvim
       luajitPackages.luarocks-nix
-      php83Packages.composer
+      # php83Packages.composer
       php
       zulu17
 
@@ -26,34 +25,22 @@
       python311Packages.pip
       python311Packages.venvShellHook
 
-# cli
-      variety
       go-task
       cloudflared
       buf
       age
-      libvirt
-      vagrant
-      android-tools
       docker-machine-kvm2
       virtualbox
       cloc
-      v2ray
-      v2raya
-      # dae
+
       innoextract
-      yazi
-      nitch
+      # yazi
       wine64
       winetricks
-      kdiskmark
-      pstree
       libcamera
       xdg-utils
       powerstat
       libnotify
-      wget
-      easyeffects
       pamixer
       light
       brightnessctl
@@ -67,10 +54,8 @@
       duf
       gh
       nvtopPackages.amd
-      amdgpu_top
       jq
       glow
-      glances
       tldr
       procs
       httpie
@@ -81,7 +66,8 @@
       lazygit
       tree-sitter
       gdb
-      openssl
+      pango
+      libsoup
       thttpd
 
       zip
@@ -96,34 +82,14 @@
       virt-manager
       bridge-utils
       flex
-      bison
       iptables
       edk2
-      exiftool
 
 # dev
       imhex
-      cmake
-      gjs
-      ninja
       jetbrains-toolbox
-      gjs
-      libadwaita
-      webkitgtk_6_0
-      meson
-      pkg-config
-      gettext
-      flatpak
-      glib
-      strace
-      bcc
 
-      awscli2
       terraform
-
-      gnumake
-      gccgo13
-      libcap.dev
 
       rustc
       cargo
@@ -131,13 +97,13 @@
       nix-index
 
 ## add some gnome packages
-        gnome-keyring
-        gnome-disk-utility
-        nautilus
-        zenity
-        gnome-tweaks
-        eog
-        gvfs
-        # dconf-editor
+      gnome-keyring
+      gnome-disk-utility
+      nautilus
+      zenity
+      gnome-tweaks
+      eog
+      gvfs
+      # dconf-editor
   ]);
 }

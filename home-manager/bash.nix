@@ -23,12 +23,11 @@
       lsblk = "lsblk -f";
       hm = "home-manager switch -b backup --flake .#$USER@$HOSTNAME --show-trace --option eval-cache false";
       nb = "sudo nixos-rebuild switch --flake .#$HOSTNAME";
-      update = "nix flake update; nb; hm; flatpak update; cache";
+      update = "nix flake update; nb; hm; cache";
       ps = "procs";
       cache = "docker system prune -a; sudo nix-collect-garbage; sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d; sudo nix store gc --debug";
       suspend = "sudo systemctl suspend";
       nix-history = "sudo nix profile history --profile /nix/var/nix/profiles/system";
-      foliate4 = "flatpak run com.github.johnfactotum.Foliate";
       f = "yazi";
       current-all-packages = "nix-store -q --requisites $CURRENT_NIXOS_SYSTEM";
       where-nix = "current-all-packages | grep -i";

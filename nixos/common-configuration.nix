@@ -11,9 +11,7 @@
     efi.canTouchEfiVariables = true;
     systemd-boot = { 
       enable = true;
-      configurationLimit = 3;
     };
-
   };
 
   boot = {
@@ -86,9 +84,13 @@
   };
 
   hardware = {
-    pulseaudio.enable = false;
+    pulseaudio = {
+      enable = false;
+      support32Bit = true;
+    };
     bluetooth.enable = true;
     graphics = {
+      enable32Bit = true;
       extraPackages = with pkgs; [
         amdvlk
       ];

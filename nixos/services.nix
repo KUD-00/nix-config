@@ -71,41 +71,10 @@
       pulse.enable = true;
     };
 
-    hydra = {
-      enable = false;
-      hydraURL = "http://localhost:3020";
-      notificationSender = "hydra@localhost";
-      buildMachinesFiles = [];
-      useSubstitutes = true;
-    };
-
-    flatpak.enable = true;
-
     gvfs.enable = true;
 
     upower.enable = true;
 
-    v2raya.enable = true;
-    # dbus.packages = with pkgs; [
-    #   gnome.gnome-keyring
-    # ];
-
     fwupd.enable = true; # a simple daemon allowing you to update some devices' firmware, including UEFI for several machines. 
-
-    # cloudflared = {
-    #   enable = true;
-    #   tunnels = {
-    #     "f522e259-6f76-4b1b-9246-aac295d83a6b" = {
-    #       credentialsFile = "${config.sops.secrets.cloudflared_creds.path}";
-    #       ingress = {
-    #         "tanken.kud.me" = {
-    #           service = "https://localhost:8001";
-    #           path = "/*.(jpg|png|css|js)";
-    #         };
-    #       };
-    #       default = "http_status:404";
-    #     };
-    #   };
-    # };
   };
 }

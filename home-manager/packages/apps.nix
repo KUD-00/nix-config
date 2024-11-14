@@ -9,17 +9,12 @@
       steam
       obs-studio
       firefox
-      slack
-      calibre
-      zoom-us
       pavucontrol
       qpwgraph
       google-chrome
-      chromium
       vscode
       beekeeper-studio
-      zed-editor
-      android-studio
-      unityhub
+      drawio
+      variety
   ]);
 }

@@ -1,11 +1,10 @@
-{ inputs, outputs, lib, config, pkgs, pkgs-stable, pkgs-master, nix-doom-emacs, hostname, ... }: {
+{ inputs, outputs, lib, config, pkgs, pkgs-stable, pkgs-master, hostname, ... }: {
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.example
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
-    nix-doom-emacs.hmModule
 
     ./environment.nix
     ./hypr.nix
@@ -65,11 +64,6 @@
         }/bin/git-credential-libsecret";
       };
     };
-
-#     doom-emacs = {
-#       enable = true;
-#       doomPrivateDir = ../config/doom.d;
-#     };
   };
 
   # Nicely reload system units when changing configs

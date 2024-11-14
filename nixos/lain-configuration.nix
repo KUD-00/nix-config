@@ -3,10 +3,18 @@
 {
   imports =
     [
-    ./lain-hardware-configuration.nix
+      ./lain-hardware-configuration.nix
       ./common-configuration.nix
     ];
 
+  boot = {
+    loader = {
+      systemd-boot = { 
+        configurationLimit = 6;
+      };
+    };
+    initrd.kernelModules = [ "amdgpu" ];
+  };
 
   fileSystems = {
     "/data" = {
@@ -23,8 +31,8 @@
   hardware = {
     graphics = {
       extraPackages = with pkgs; [
-        rocm-opencl-icd
-          rocm-opencl-runtime
+        rocmPackages.rocm-runtime
+        rocmPackages.clr.icd
       ];
     };
   };
@@ -41,10 +49,6 @@
 
 # --------------------------------------------------------------------------
 # --------------------------------------------------------------------------
-# virtualisation = {
-#   waydroid.enable = true;
-#   lxd.enable = true;
-# };
 
 # --------------------------------------------------------------------------
 # --------------------------------------------------------------------------
