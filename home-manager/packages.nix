@@ -4,14 +4,15 @@
   imports = [
     ./packages/go.nix
     ./packages/apps.nix
-    ./packages/nodejs.nix
-    ./packages/hyprland.nix
+    # ./packages/nodejs.nix
+    # ./packages/hyprland.nix
     ./packages/docker.nix
   ];
 
   programs.atuin.enable = true;
 
   home.packages = (with pkgs; [
+      tailscale
       yt-dlp-light
       ngrok
 

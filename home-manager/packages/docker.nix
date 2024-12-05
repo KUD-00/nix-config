@@ -5,7 +5,6 @@
     docker
     kubernetes
     kubectl
-    kind
     kubectx
     kubernetes-helm
     minikube

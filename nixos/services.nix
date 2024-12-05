@@ -13,8 +13,8 @@
   #   group = "cloudflared";
   #   mode = "0400";
   # };
-
   services = {
+    tailscale.enable = true;
     syncthing = {
       enable = true;
       user = "kud";
