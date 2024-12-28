@@ -13,6 +13,7 @@
       twemoji-color-font
       fira-code
       fira-code-symbols
+      nerd-fonts.jetbrains-mono
     ];
 
     fontconfig = {

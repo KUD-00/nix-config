@@ -43,6 +43,7 @@
     data-root = "/develop/docker";
   };
 
+
 # Before changing this value read the documentation for this option
 # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05";
@@ -70,7 +71,7 @@
 # services.atuin.enable = true;
 
 # Enable the OpenSSH daemon.
-# services.openssh.enable = true;
+services.openssh.enable = true;
 
 # Enable touchpad support (enabled default in most desktopManager).
 # services.xserver.libinput.enable = true;

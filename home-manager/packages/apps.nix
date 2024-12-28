@@ -13,5 +13,6 @@
       beekeeper-studio
       drawio
       variety
+      lens
   ]);
 }
