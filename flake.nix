@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -84,6 +85,16 @@
             sops-nix.nixosModules.sops
           ];
         };
+
+        Rabi = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ inputs.self.overlays.additions ];
+            })
+            ./nixos/rabi-configuration.nix
+          ];
+        };
       };
 
       # Standalone home-manager configuration entrypoint
@@ -110,6 +121,17 @@
             ./home-manager/home.nix
           ];
         };
+
+        "kud@Rabi" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            hostname = "Rabi";
+          };
+          modules = [
+            ./home-manager/home.nix
+          ];
+        }
       };
     };
 }
