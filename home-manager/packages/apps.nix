@@ -10,7 +10,7 @@
       firefox
       google-chrome
       vscode
-      beekeeper-studio
+      windsurf
       drawio
       variety
       lens

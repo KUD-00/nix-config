@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -87,7 +88,7 @@
         };
 
         Rabi = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs xremap-flake; };
           modules = [
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ inputs.self.overlays.additions ];
@@ -131,7 +132,7 @@
           modules = [
             ./home-manager/home.nix
           ];
-        }
+        };
       };
     };
 }
