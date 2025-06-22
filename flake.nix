@@ -15,13 +15,15 @@
     agenix.url = "github:ryantm/agenix";
     sops-nix.url = "github:Mic92/sops-nix";
 
+    k0s-nix.url = "github:johbo/k0s-nix";
+
     berberman = {
       url = "github:berberman/flakes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, k0s-nix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -64,9 +66,10 @@
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ inputs.self.overlays.additions ];
             })
-            ./nixos/lain-configuration.nix
             agenix.nixosModules.default
+            k0s-nix.nixosModules.default
             sops-nix.nixosModules.sops
+            ./nixos/lain-configuration.nix
           ];
         };
 
