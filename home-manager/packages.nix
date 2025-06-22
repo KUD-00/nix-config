@@ -54,7 +54,7 @@
       du-dust
       duf
       gh
-      nvtopPackages.amd
+      nvtopPackages.nvidia 
       jq
       glow
       tldr
