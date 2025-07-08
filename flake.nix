@@ -23,7 +23,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, k0s-nix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, k0s-nix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -109,6 +109,10 @@
           extraSpecialArgs = {
             inherit inputs outputs;
             hostname = "Lain";
+            pkgs-master = import nixpkgs-master {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
           };
           modules = [
             ./home-manager/home.nix
@@ -120,6 +124,10 @@
           extraSpecialArgs = {
             inherit inputs outputs;
             hostname = "Mikan";
+            pkgs-master = import nixpkgs-master {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
           };
           modules = [
             ./home-manager/home.nix
@@ -131,6 +139,10 @@
           extraSpecialArgs = {
             inherit inputs outputs;
             hostname = "Rabi";
+            pkgs-master = import nixpkgs-master {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
           };
           modules = [
             ./home-manager/home.nix

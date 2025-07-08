@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-master, ... }:
 
 {
   home.packages = (with pkgs; [
@@ -10,7 +10,7 @@
       firefox
       google-chrome
       vscode
-      windsurf
+      pkgs-master.windsurf
       drawio
       variety
       lens
