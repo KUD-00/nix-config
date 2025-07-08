@@ -11,6 +11,8 @@
       google-chrome
       vscode
       pkgs-master.windsurf
+      pkgs-master.code-cursor-fhs
+      affine
       drawio
       variety
       lens
