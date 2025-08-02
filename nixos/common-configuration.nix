@@ -142,9 +142,9 @@
     dev.enable = true;
   };
 
-  # programs = {
-  #   hyprland.enable = true;
-  # };
+  programs = {
+    hyprland.enable = true;
+  };
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {

@@ -13,6 +13,7 @@
 
   home.packages = (with pkgs; [
       neohtop
+      wrangler
       tailscale
       yt-dlp-light
       ngrok
