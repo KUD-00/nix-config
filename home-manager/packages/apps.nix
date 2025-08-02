@@ -12,6 +12,7 @@
       vscode
       pkgs-master.windsurf
       pkgs-master.code-cursor-fhs
+      pkgs-master.claude-code
       affine
       drawio
       variety

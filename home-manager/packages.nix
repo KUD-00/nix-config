@@ -12,6 +12,7 @@
   programs.atuin.enable = true;
 
   home.packages = (with pkgs; [
+      neohtop
       tailscale
       yt-dlp-light
       ngrok
@@ -68,7 +69,6 @@
       tree-sitter
       gdb
       pango
-      libsoup
       thttpd
 
       zip
