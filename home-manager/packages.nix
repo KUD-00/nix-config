@@ -12,7 +12,9 @@
   programs.atuin.enable = true;
 
   home.packages = (with pkgs; [
-      neohtop
+      swaybg
+      waypaper
+      # neohtop
       wrangler
       tailscale
       yt-dlp-light

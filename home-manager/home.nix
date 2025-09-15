@@ -42,6 +42,9 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true); # Workaround for https://github.com/nix-community/home-manager/issues/2942
+      permittedInsecurePackages = [
+        "beekeeper-studio-5.3.4"
+      ];
     };
   };
 

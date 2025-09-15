@@ -13,7 +13,7 @@
         configurationLimit = 6;
       };
     };
-    kernelParams = [ "i915.enable_psr=0" ];
+    kernelParams = [ "i915.enable_psr=0" "reboot=bios" ];
   };
 
   hardware = {
@@ -29,49 +29,64 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
-  services.k0s = {
-    enable      = true;                  # 启用 k0s
-    package    = inputs.k0s-nix
-                   .packages."${pkgs.system}"
-                   .k0s;                # 拿到 k0s-nix flake 构建出的二进制
-    dataDir     = "/var/lib/k0s";        # 默认数据目录
+  # services.k0s = {
+  #   enable      = true;                  # 启用 k0s
+  #   package    = inputs.k0s-nix
+  #                  .packages."${pkgs.system}"
+  #                  .k0s;                # 拿到 k0s-nix flake 构建出的二进制
+  #   dataDir     = "/var/lib/k0s";        # 默认数据目录
+  #
+  #   role = "controller+worker";
+  #
+  #   # The first controller to bring up does not have a join token,
+  #   # it has to be flagged with "isLeader".
+  #   isLeader = true;
+  #
+  #   spec = {
+  #     api = {
+  #       # 绑定所有本地接口，或改成你控制节点的局域网 IP
+  #       address = "192.168.2.105";
+  #       # （可选）如果想改 API 端口，可额外设置 port, k0sApiPort 等
+  #       port = 6443;
+  #       sans    = [
+  #         "127.0.0.1"            # localhost
+  #         "localhost"
+  #         "192.168.2.105"        # 控制节点局域网 IP（改成你的实际 IP）
+  #         "kud.local"            # 控制节点的 DNS 名（如果有的话）
+  #       ];
+  #     };
+  #
+  #     # （可选）还可以声明存储后端，网络插件等
+  #     storage = {
+  #       type        = "etcd";
+  #       etcd = {
+  #         peerAddress = "127.0.0.1";
+  #       };
+  #     };
+  #   };
+  # };
 
-    role = "controller+worker";
-
-    # The first controller to bring up does not have a join token,
-    # it has to be flagged with "isLeader".
-    isLeader = true;
-
-    spec = {
-      api = {
-        # 绑定所有本地接口，或改成你控制节点的局域网 IP
-        address = "192.168.2.105";
-        # （可选）如果想改 API 端口，可额外设置 port, k0sApiPort 等
-        port = 6443;
-        sans    = [
-          "127.0.0.1"            # localhost
-          "localhost"
-          "192.168.2.105"        # 控制节点局域网 IP（改成你的实际 IP）
-          "kud.local"            # 控制节点的 DNS 名（如果有的话）
-        ];
-      };
-
-      # （可选）还可以声明存储后端，网络插件等
-      storage = {
-        type        = "etcd";
-        etcd = {
-          peerAddress = "127.0.0.1";
-        };
-      };
-    };
-  };
-
-  networking.firewall.allowedTCPPorts = [ 6443 8132 ];
-
-  environment.systemPackages = [
-    # Pulls the prebuilt k0s from the k0s-nix flake for your system
-    inputs.k0s-nix.packages.${pkgs.system}.k0s
+  # K3s configuration
+  services.k3s.enable = true;
+  services.k3s.role = "server";
+  services.k3s.extraFlags = toString [
+    # "--debug" # Optionally add additional args to k3s
   ];
+
+  networking.firewall.allowedTCPPorts = [
+    6443 # k3s: required so that pods can reach the API server (running on port 6443 by default)
+    8132
+    # 2379 # k3s, etcd clients: required if using a "High Availability Embedded etcd" configuration
+    # 2380 # k3s, etcd peers: required if using a "High Availability Embedded etcd" configuration
+  ];
+  networking.firewall.allowedUDPPorts = [
+    # 8472 # k3s, flannel: required if using multi-node for inter-node networking
+  ];
+
+  # environment.systemPackages = [
+  #   # Pulls the prebuilt k0s from the k0s-nix flake for your system
+  #   inputs.k0s-nix.packages.${pkgs.system}.k0s
+  # ];
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -138,6 +153,12 @@
 
 # Enable the OpenSSH daemon.
 services.openssh.enable = true;
+swapDevices = [
+  {
+    device = "/swapfile";
+    size   = 96 * 1024;
+  }
+];
 
 # Enable touchpad support (enabled default in most desktopManager).
 # services.xserver.libinput.enable = true;

@@ -18,6 +18,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
     initrd.kernelModules = [ "acpi_call" ];
+    kernel.sysctl."kernel.sysrq" = 502;
   };
 
   nix.gc = {
