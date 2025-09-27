@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-master, ... }:
 
 {
   imports = [
@@ -12,6 +12,7 @@
   programs.atuin.enable = true;
 
   home.packages = (with pkgs; [
+      pkgs-master.codex
       swaybg
       waypaper
       # neohtop
