@@ -4,7 +4,7 @@
   imports = [
     ./packages/go.nix
     ./packages/apps.nix
-    # ./packages/nodejs.nix
+    ./packages/nodejs.nix
     # ./packages/hyprland.nix
     ./packages/docker.nix
   ];
@@ -36,10 +36,10 @@
       buf
       age
       docker-machine-kvm2
-      virtualbox
+      # virtualbox
       cloc
 
-      innoextract
+      # innoextract
       # yazi
       wine64
       winetricks
@@ -47,7 +47,7 @@
       xdg-utils
       powerstat
       libnotify
-      pamixer
+#      pamixer
       light
       brightnessctl
       atool
@@ -56,10 +56,10 @@
       imagemagick
       eza
       bat
-      du-dust
+      dust
       duf
       gh
-      nvtopPackages.nvidia 
+      # nvtopPackages.nvidia  # 暂时禁用：CUDA 依赖包 broken
       jq
       glow
       tldr
@@ -91,7 +91,7 @@
       edk2
 
 # dev
-      imhex
+      # imhex
       jetbrains-toolbox
 
       terraform

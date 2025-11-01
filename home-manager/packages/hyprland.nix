@@ -14,7 +14,7 @@
       grim
       indicator-sound-switcher # seems not working
       slurp # select a region of screen in wayland
-      fcitx5-chinese-addons
+      qt6Packages.fcitx5-chinese-addons
       tinysparql
       openrgb
       polkit_gnome

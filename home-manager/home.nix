@@ -59,9 +59,9 @@
     
     git = {
       enable = true;
-      userName  = "kud@nix";
-      userEmail = "kasa7qi@gmail.com";
-      extraConfig = {
+      settings = {
+        user.name = "kud@nix";
+        user.email = "kasa7qi@gmail.com";
         http.postBuffer = 524288000;
         credential.helper = "${
           pkgs.git.override { withLibsecret = true; }

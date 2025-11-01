@@ -18,7 +18,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
     initrd.kernelModules = [ "acpi_call" ];
-    kernel.sysctl."kernel.sysrq" = 502;
+    kernel.sysctl."kernel.sysrq" = 1;
   };
 
   nix.gc = {
@@ -49,7 +49,7 @@
       enable = true;
       fcitx5.addons = with pkgs; [
         fcitx5-rime
-        fcitx5-chinese-addons
+        qt6Packages.fcitx5-chinese-addons
         fcitx5-gtk
         fcitx5-mozc
       ];
@@ -64,7 +64,7 @@
     };
   };
 
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "kud" ];
 
 
@@ -74,13 +74,6 @@
       package = pkgs.qemu_kvm;
       runAsRoot = true;
       swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [(pkgs.OVMF.override {
-            secureBoot = true;
-            tpmSupport = true;
-            }).fd];
-      };
     };
   };
 

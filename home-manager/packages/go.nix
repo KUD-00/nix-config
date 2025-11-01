@@ -5,7 +5,7 @@
       go
       protobuf
       protoc-gen-go
-      protoc-gen-connect-go
+      # protoc-gen-connect-go
       grpcurl
   ]);
 }
