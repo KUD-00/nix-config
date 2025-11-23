@@ -11,6 +11,10 @@
 
   programs.atuin.enable = true;
 
+  programs.vscode = {
+    enable = true;
+  };
+
   home.packages = (with pkgs; [
       pkgs-master.codex
       swaybg

@@ -9,7 +9,6 @@
       obs-studio
       firefox
       google-chrome
-      vscode
       pkgs-master.windsurf
       pkgs-master.code-cursor-fhs
       pkgs-master.claude-code

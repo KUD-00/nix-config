@@ -138,6 +138,14 @@
 
   programs = {
     hyprland.enable = true;
+    nix-ld.enable = true;
+    nix-ld.libraries = with pkgs; [
+      stdenv.cc.cc
+      zlib
+      curl
+      openssl
+      libsecret
+    ];
   };
 
   systemd = {
