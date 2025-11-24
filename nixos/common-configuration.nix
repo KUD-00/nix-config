@@ -4,7 +4,17 @@
   imports = [
     ./font.nix
     ./services.nix
+    inputs.vscode-server.nixosModules.default
   ];
+
+  # VSCode Server 自动 patch
+  services.vscode-server = {
+    enable = true;
+    installPath = [
+      "$HOME/.vscode-server"
+      "$HOME/.vscode/cli/servers"  # VSCode CLI/Tunnel 模式
+    ];
+  };
 
   boot.loader = {
     timeout = 1;
