@@ -16,5 +16,6 @@
       drawio
       variety
       lens
+      flacon
   ]);
 }
