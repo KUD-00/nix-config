@@ -17,5 +17,7 @@
       variety
       lens
       flacon
+      antigravity-fhs
+      warp-terminal
   ]);
 }
