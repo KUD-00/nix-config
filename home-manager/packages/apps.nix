@@ -17,7 +17,8 @@
       variety
       lens
       flacon
-      antigravity-fhs
-      warp-terminal
+      pkgs-master.antigravity-fhs
+      pkgs-master.warp-terminal
+      pkgs-master.kiro-fhs
   ]);
 }

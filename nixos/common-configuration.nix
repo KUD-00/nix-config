@@ -114,7 +114,7 @@
     kitty
 
     # secret managment
-    inputs.agenix.packages."${system}".default
+    inputs.agenix.packages."${pkgs.stdenv.hostPlatform.system}".default
     sops
 
     gnomeExtensions.unite
