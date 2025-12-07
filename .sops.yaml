@@ -1,0 +1,9 @@
+keys:
+  - &users:
+      - age163uyhwhqycewx7fe6ucsf5k8s3sdjm603aul8cayz7xrtc764f0qcrcq0j
+
+creation_rules:
+  - path_regex: secrets.enc.yaml$
+    key_groups:
+    - age:
+      - *users

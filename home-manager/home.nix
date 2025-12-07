@@ -5,6 +5,7 @@
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
+    inputs.sops-nix.homeManagerModules.sops
 
     ./environment.nix
     ./hypr.nix
@@ -52,6 +53,12 @@
   home = {
     username = "kud";
     homeDirectory = "/home/kud";
+  };
+
+  sops = {
+    defaultSopsFile = ../secrets.enc.yaml;
+    age.keyFile = "/home/kud/.config/sops/age/keys.txt";
+    secrets.factory_api_key = { };
   };
 
   programs = {

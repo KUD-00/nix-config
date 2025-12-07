@@ -51,6 +51,11 @@
     export CURRENT_NIXOS_SYSTEM=$(readlink -f /nix/var/nix/profiles/system)
     export PATH="$(go env GOPATH)/bin:$PATH"
 
+    if [ -f "${config.sops.secrets.factory_api_key.path}" ]; then
+      export FACTORY_API_KEY="$(cat ${config.sops.secrets.factory_api_key.path})"
+    fi
+
+
     function who-depends-on () {
       nix-store --query --referrers $(where-nix $1)
     }
