@@ -114,5 +114,6 @@
       eog
       gvfs
       # dconf-editor
+      happy-coder
   ]);
 }

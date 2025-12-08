@@ -3,4 +3,5 @@
 
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   marcel = pkgs.callPackage ./marcel.nix { };
+  happy-coder = pkgs.callPackage ./happy-coder.nix { };
 }
