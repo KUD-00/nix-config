@@ -21,6 +21,7 @@
     ./theme.nix
     ./rofi.nix
     ./scripts.nix
+    ./vscode-tunnel.nix
   ];
 
   nixpkgs = {

@@ -115,5 +115,6 @@
       gvfs
       # dconf-editor
       happy-coder
+      kiro-cli
   ]);
 }
