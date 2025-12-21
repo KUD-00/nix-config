@@ -27,7 +27,6 @@
       # Enable OpenGL
       enable = true;
       extraPackages = with pkgs; [
-        intel-media-driver
         nvidia-vaapi-driver
       ];
     };

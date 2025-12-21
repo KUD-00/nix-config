@@ -21,6 +21,11 @@
     autoStart = true;
     capSysAdmin = true;
     openFirewall = true;
+    # 启用 CUDA 支持以使用 NVENC 硬件编码
+    package = pkgs.sunshine.override { cudaSupport = true; };
+    settings = {
+      encoder = "nvenc";
+    };
   };
 
   # uinput 权限（解决鼠标问题）
