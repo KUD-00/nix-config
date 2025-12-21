@@ -16,8 +16,25 @@
     ];
   };
 
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
+  # uinput 权限（解决鼠标问题）
+  users.groups.uinput = {};
+  
+  services.udev.extraRules = ''
+    KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"
+  '';
+
+  # 确保 uinput 模块加载
+  boot.kernelModules = [ "uinput" ];
+
   boot.loader = {
-    timeout = 1;
+    timeout = 10;
     efi.canTouchEfiVariables = true;
     systemd-boot = { 
       enable = true;
@@ -45,7 +62,11 @@
     trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
   };
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    # 在 Tailscale DNS 之前插入公共 DNS，解决 Nix 沙箱问题
+    insertNameservers = [ "1.1.1.1" "8.8.8.8" ];
+  };
 
   time.timeZone = "Asia/Tokyo";
 
@@ -99,7 +120,7 @@
 
   users.users.kud = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "libvirtd" "input" "video" "uinput" ]; # Enable ‘sudo’ for the user.
     initialPassword = "seki123";
   };
 
@@ -118,6 +139,7 @@
     sops
 
     gnomeExtensions.unite
+    gnome-randr
     # FHS
     (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
      pkgs.buildFHSEnv (base // {

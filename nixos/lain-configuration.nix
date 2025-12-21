@@ -13,7 +13,13 @@
         configurationLimit = 6;
       };
     };
-    kernelParams = [ "i915.enable_psr=0" "reboot=bios" ];
+    kernelParams = [
+      "i915.enable_psr=0"
+      "reboot=bios"
+      # 虚拟显示器 EDID (iPad Pro 11")
+      "drm.edid_firmware=DP-2:edid/ipad-pro-11.bin"
+      "video=DP-2:e"
+    ];
   };
 
   hardware = {
@@ -22,8 +28,17 @@
       enable = true;
       extraPackages = with pkgs; [
         intel-media-driver
+        nvidia-vaapi-driver
       ];
     };
+
+    # 虚拟显示器 EDID firmware
+    firmware = [
+      (pkgs.runCommand "edid-ipad-firmware" {} ''
+        mkdir -p $out/lib/firmware/edid
+        cp ${./ipad-pro-11.bin} $out/lib/firmware/edid/ipad-pro-11.bin
+      '')
+    ];
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -83,10 +98,11 @@
     # 8472 # k3s, flannel: required if using multi-node for inter-node networking
   ];
 
-  # environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
   #   # Pulls the prebuilt k0s from the k0s-nix flake for your system
   #   inputs.k0s-nix.packages.${pkgs.system}.k0s
-  # ];
+    cudaPackages.cuda_nvcc
+  ];
 
   hardware.nvidia = {
     # Modesetting is required.

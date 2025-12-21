@@ -43,6 +43,10 @@
       # nix
       NIXPKGS_ALLOW_UNFREE = "1";
       NIXPKGS_ALLOW_BROKEN = "1";
+
+      # Sunshine
+      NVD_BACKEND = "direct";
+      LIBVA_DRIVER_NAME = "nvidia";
     };
   };
 }

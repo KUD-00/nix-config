@@ -16,6 +16,8 @@
   };
 
   home.packages = (with pkgs; [
+      gnome-monitor-config
+      gnome-randr
       pkgs-master.codex
       swaybg
       waypaper

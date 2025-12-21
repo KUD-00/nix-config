@@ -19,6 +19,6 @@
       flacon
       pkgs-master.antigravity-fhs
       pkgs-master.warp-terminal
-      pkgs-master.kiro-fhs
+      # pkgs-master.kiro-fhs  # DNS resolution fails in Nix sandbox
   ]);
 }
