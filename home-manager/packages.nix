@@ -16,6 +16,9 @@
   };
 
   home.packages = (with pkgs; [
+      opencode
+      termius
+      remmina
       gnome-monitor-config
       gnome-randr
       pkgs-master.codex
@@ -41,7 +44,6 @@
       cloudflared
       buf
       age
-      docker-machine-kvm2
       # virtualbox
       cloc
 
@@ -106,6 +108,70 @@
       cargo
 
       nix-index
+      (writeShellScriptBin "power-estimate" ''
+        #!/usr/bin/env bash
+        set -e
+        shopt -s nullglob
+
+        baseline=30
+        if [ -n "$BASELINE_W" ]; then
+          baseline="$BASELINE_W"
+        fi
+
+        rapl="''${RAPL_PATH:-}"
+        if [ -z "$rapl" ]; then
+          for base in /sys/class/powercap /sys/devices/virtual/powercap; do
+            for dir in "$base"/intel-rapl:*; do
+              [ -r "$dir/energy_uj" ] || continue
+              if [ -r "$dir/name" ]; then
+                name="$(cat "$dir/name")"
+                case "$name" in
+                  package-*) rapl="$dir/energy_uj"; break 2 ;;
+                esac
+              fi
+            done
+          done
+        fi
+        if [ -z "$rapl" ]; then
+          for base in /sys/class/powercap /sys/devices/virtual/powercap; do
+            for file in "$base"/intel-rapl:*/energy_uj; do
+              [ -r "$file" ] || continue
+              rapl="$file"; break 2
+            done
+          done
+        fi
+        if [ -z "$rapl" ] || [ ! -r "$rapl" ]; then
+          echo "RAPL not available. Try: ls /sys/class/powercap" >&2
+          echo "Or set RAPL_PATH=/path/to/energy_uj" >&2
+          exit 1
+        fi
+
+        nvidia_smi="$(command -v nvidia-smi || true)"
+        if [ -z "$nvidia_smi" ] && [ -x /run/opengl-driver/bin/nvidia-smi ]; then
+          nvidia_smi="/run/opengl-driver/bin/nvidia-smi"
+        fi
+        if [ -z "$nvidia_smi" ]; then
+          echo "nvidia-smi not found in PATH or /run/opengl-driver/bin" >&2
+          exit 1
+        fi
+
+        while true; do
+          e1=$(cat "$rapl"); t1=$(date +%s%N)
+          sleep 1
+          e2=$(cat "$rapl"); t2=$(date +%s%N)
+
+          cpu=$(awk -v e1="$e1" -v e2="$e2" -v t1="$t1" -v t2="$t2" \
+            'BEGIN{printf "%.1f", (e2-e1)/1e6/((t2-t1)/1e9)}')
+
+          gpu=$("$nvidia_smi" --query-gpu=power.draw --format=csv,noheader,nounits \
+            | awk '{sum+=$1} END{printf "%.1f", sum}')
+
+          total=$(awk -v c="$cpu" -v g="$gpu" -v b="$baseline" \
+            'BEGIN{printf "%.1f", c+g+b}')
+
+          printf "CPU %s W | GPU %s W | Est %s W (baseline %s W)\n" "$cpu" "$gpu" "$total" "$baseline"
+        done
+      '')
 
 ## add some gnome packages
       gnome-keyring

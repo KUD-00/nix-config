@@ -44,6 +44,7 @@
       k = "kubectl";
       p3 = "python3";
       gpa = "git push --all origin";
+      codex-accounts = "$HOME/Developer/scripts/codex-accounts.sh";
     };
 
 # any better ideas?

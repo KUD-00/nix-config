@@ -8,6 +8,8 @@
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-openclaw.url = "github:openclaw/nix-openclaw";
+    nix-steipete-tools.url = "github:openclaw/nix-steipete-tools?dir=tools/summarize";
 
     xremap-flake.url = "github:xremap/nix-flake";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -25,7 +27,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, k0s-nix, vscode-server, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager, nix-openclaw, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, k0s-nix, vscode-server, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [

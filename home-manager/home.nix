@@ -8,6 +8,7 @@
     inputs.sops-nix.homeManagerModules.sops
 
     ./environment.nix
+    ./openclaw.nix
     ./hypr.nix
     ./waybar.nix
     ./bash.nix
@@ -29,6 +30,7 @@
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
+      inputs.nix-openclaw.overlays.default
       # outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
@@ -83,4 +85,3 @@
 
   home.stateVersion = "23.05";  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 }
-
