@@ -16,12 +16,13 @@
   };
 
   home.packages = (with pkgs; [
+      yazi
       opencode
       termius
       remmina
       gnome-monitor-config
       gnome-randr
-      inputs.codex-cli-nix.packages.${pkgs.system}.default
+      inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
       swaybg
       waypaper
       # neohtop
@@ -187,5 +188,6 @@
       # dconf-editor
       happy-coder
       kiro-cli
+      codex-switcher
   ]);
 }

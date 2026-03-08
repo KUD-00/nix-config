@@ -6,8 +6,4 @@
     executable = true;
   };
 
-  home.file."Developer/scripts/codex-accounts.sh" = {
-    source = ../scripts/codex-accounts.sh;
-    executable = true;
-  };
 }

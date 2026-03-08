@@ -126,7 +126,6 @@
   users.users.kud = {
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" "input" "video" "uinput" ]; # Enable ‘sudo’ for the user.
-    initialPassword = "seki123";
   };
 
   environment.systemPackages = with pkgs; [
