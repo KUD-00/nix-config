@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-master, ... }:
+{ config, lib, pkgs, pkgs-master, inputs, ... }:
 
 {
   imports = [
@@ -21,7 +21,7 @@
       remmina
       gnome-monitor-config
       gnome-randr
-      pkgs-master.codex
+      inputs.codex-cli-nix.packages.${pkgs.system}.default
       swaybg
       waypaper
       # neohtop
@@ -37,8 +37,8 @@
       zulu17
 
       python3
-      python311Packages.pip
-      python311Packages.venvShellHook
+      python3Packages.pip
+      python3Packages.venvShellHook
 
       go-task
       cloudflared
@@ -56,7 +56,7 @@
       powerstat
       libnotify
 #      pamixer
-      light
+#      light
       brightnessctl
       atool
       ripgrep
@@ -150,10 +150,6 @@
         if [ -z "$nvidia_smi" ] && [ -x /run/opengl-driver/bin/nvidia-smi ]; then
           nvidia_smi="/run/opengl-driver/bin/nvidia-smi"
         fi
-        if [ -z "$nvidia_smi" ]; then
-          echo "nvidia-smi not found in PATH or /run/opengl-driver/bin" >&2
-          exit 1
-        fi
 
         while true; do
           e1=$(cat "$rapl"); t1=$(date +%s%N)
@@ -163,8 +159,15 @@
           cpu=$(awk -v e1="$e1" -v e2="$e2" -v t1="$t1" -v t2="$t2" \
             'BEGIN{printf "%.1f", (e2-e1)/1e6/((t2-t1)/1e9)}')
 
-          gpu=$("$nvidia_smi" --query-gpu=power.draw --format=csv,noheader,nounits \
-            | awk '{sum+=$1} END{printf "%.1f", sum}')
+          if [ -n "$nvidia_smi" ]; then
+            gpu=$("$nvidia_smi" --query-gpu=power.draw --format=csv,noheader,nounits 2>/dev/null \
+              | awk '{sum+=$1} END{printf "%.1f", sum}')
+            if [ -z "$gpu" ]; then
+              gpu="0.0"
+            fi
+          else
+            gpu="0.0"
+          fi
 
           total=$(awk -v c="$cpu" -v g="$gpu" -v b="$baseline" \
             'BEGIN{printf "%.1f", c+g+b}')

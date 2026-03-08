@@ -62,20 +62,26 @@
     defaultSopsFile = ../secrets.enc.yaml;
     age.keyFile = "/home/kud/.config/sops/age/keys.txt";
     secrets.factory_api_key = { };
+    secrets.minimax_api_key = { };
   };
+
+  services.ssh-agent.enable = true;
 
   programs = {
     home-manager.enable = true;
-    
+
+    ssh = {
+      enable = true;
+      enableDefaultConfig = false;
+      matchBlocks."*".addKeysToAgent = "yes";
+    };
+
     git = {
       enable = true;
       settings = {
         user.name = "kud@nix";
         user.email = "kasa7qi@gmail.com";
         http.postBuffer = 524288000;
-        credential.helper = "${
-          pkgs.git.override { withLibsecret = true; }
-        }/bin/git-credential-libsecret";
       };
     };
   };

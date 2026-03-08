@@ -45,6 +45,8 @@
       p3 = "python3";
       gpa = "git push --all origin";
       codex-accounts = "$HOME/Developer/scripts/codex-accounts.sh";
+      minimax = "env ANTHROPIC_BASE_URL=https://api.minimaxi.com/anthropic ANTHROPIC_AUTH_TOKEN=\"$(cat ${config.sops.secrets.minimax_api_key.path})\" API_TIMEOUT_MS=3000000 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 ANTHROPIC_MODEL=MiniMax-M2.5 ANTHROPIC_SMALL_FAST_MODEL=MiniMax-M2.5 ANTHROPIC_DEFAULT_SONNET_MODEL=MiniMax-M2.5 ANTHROPIC_DEFAULT_OPUS_MODEL=MiniMax-M2.5 ANTHROPIC_DEFAULT_HAIKU_MODEL=MiniMax-M2.5 claude --dangerously-skip-permissions";
+      claude = "env -u ANTHROPIC_BASE_URL -u ANTHROPIC_AUTH_TOKEN -u API_TIMEOUT_MS -u CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC -u ANTHROPIC_MODEL -u ANTHROPIC_SMALL_FAST_MODEL -u ANTHROPIC_DEFAULT_SONNET_MODEL -u ANTHROPIC_DEFAULT_OPUS_MODEL -u ANTHROPIC_DEFAULT_HAIKU_MODEL claude --dangerously-skip-permissions";
     };
 
 # any better ideas?

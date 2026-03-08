@@ -185,6 +185,16 @@
     ];
   };
 
+  # 禁止系统自动休眠/挂起（远程访问时不被打断）
+  services.displayManager.gdm.autoSuspend = false;
+
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "no";
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
+
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";

@@ -20,6 +20,7 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     k0s-nix.url = "github:johbo/k0s-nix";
+    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
 
     berberman = {
       url = "github:berberman/flakes";
@@ -27,7 +28,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager, nix-openclaw, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, k0s-nix, vscode-server, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager, nix-openclaw, xremap-flake, nixos-hardware, berberman, agenix, sops-nix, k0s-nix, vscode-server, codex-cli-nix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
