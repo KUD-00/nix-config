@@ -14,6 +14,8 @@
       package = pkgs.ant-theme;
     };
 
+    gtk4.theme = config.gtk.theme;
+
     cursorTheme = {
       name = "Bibata-Modern-Classic";
       package = pkgs.bibata-cursors;

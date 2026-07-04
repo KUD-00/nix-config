@@ -5,7 +5,6 @@
       foliate
       qq
       mpv
-      steam
       obs-studio
       firefox
       google-chrome

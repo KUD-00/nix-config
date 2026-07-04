@@ -3,7 +3,8 @@
 
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   marcel = pkgs.callPackage ./marcel.nix { };
-  happy-coder = pkgs.callPackage ./happy-coder.nix { };
   kiro-cli = pkgs.callPackage ./kiro-cli.nix { };
   codex-switcher = pkgs.callPackage ./codex-switcher.nix { };
+  grok-build = pkgs.callPackage ./grok-build.nix { };
+  orca-ide = pkgs.callPackage ./orca-ide.nix { };
 }

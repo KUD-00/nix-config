@@ -5,6 +5,7 @@
     [
       ./lain-hardware-configuration.nix
       ./common-configuration.nix
+      ./hermes-agent.nix
     ];
 
   boot = {
@@ -16,11 +17,35 @@
     kernelParams = [
       "i915.enable_psr=0"
       "reboot=bios"
-      # 虚拟显示器 EDID (iPad Pro 11")
+      # Phantom iPad Pro 11" display on DP-2.
+      # NVIDIA's blob ignores drm.edid_firmware on HDMI but honors it on DP.
       "drm.edid_firmware=DP-2:edid/ipad-pro-11.bin"
       "video=DP-2:e"
     ];
   };
+
+  # 桌面工作站:CPU 调度器锁 performance,保持高频更稳、升频延迟更低。
+  # 禁用 power-profiles-daemon,否则它会在 intel_pstate active 模式下接管 EPP,
+  # 让上面的 governor 设置失效(GNOME 的电源模式切换器也会随之消失)。
+  powerManagement.cpuFreqGovernor = "performance";
+  services.power-profiles-daemon.enable = false;
+
+  # sched_ext 低延迟调度器(为游戏/交互优化,内核已含 CONFIG_SCHED_CLASS_EXT)
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+  };
+
+  # 自动给前台进程提优先级,k3s+构建+游戏混跑时桌面更跟手
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-cpp;
+  };
+
+  # /tmp 走内存:构建/临时文件更快、少写 SSD(94GB 内存撑得住)。
+  # 极大的本地构建若报空间不足,可调 boot.tmp.tmpfsSize 或关掉此项。
+  boot.tmp.useTmpfs = true;
 
   hardware = {
     graphics = {
@@ -31,7 +56,6 @@
       ];
     };
 
-    # 虚拟显示器 EDID firmware
     firmware = [
       (pkgs.runCommand "edid-ipad-firmware" {} ''
         mkdir -p $out/lib/firmware/edid
@@ -86,6 +110,12 @@
   services.k3s.extraFlags = toString [
     # "--debug" # Optionally add additional args to k3s
   ];
+
+  services.tailscale = {
+    openFirewall = true;
+    useRoutingFeatures = "server";
+    extraSetFlags = [ "--advertise-exit-node" ];
+  };
 
   networking.firewall.allowedTCPPorts = [
     6443 # k3s: required so that pods can reach the API server (running on port 6443 by default)
@@ -178,4 +208,3 @@ swapDevices = [
 # Enable touchpad support (enabled default in most desktopManager).
 # services.xserver.libinput.enable = true;
 }
-

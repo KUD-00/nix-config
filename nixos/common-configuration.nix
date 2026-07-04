@@ -25,6 +25,8 @@
     package = pkgs.sunshine.override { cudaSupport = true; };
     settings = {
       encoder = "nvenc";
+      # DP-2 phantom display (iPad Pro 11 EDID). See `Monitor N is ...` lines in sunshine.log.
+      output_name = "1";
     };
   };
 
@@ -36,7 +38,9 @@
   '';
 
   # 确保 uinput 模块加载
-  boot.kernelModules = [ "uinput" ];
+  # ntsync: NT 同步原语驱动,Wine/Proton 用它替代 esync/fsync,游戏性能更好
+  # tcp_bbr: BBR 拥塞控制(默认是模块,需显式加载)
+  boot.kernelModules = [ "uinput" "ntsync" "tcp_bbr" ];
 
   boot.loader = {
     timeout = 10;
@@ -51,6 +55,11 @@
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
     initrd.kernelModules = [ "acpi_call" ];
     kernel.sysctl."kernel.sysrq" = 1;
+    # 提高内存映射上限到 SteamOS 默认值,修复部分现代游戏的崩溃/卡顿
+    kernel.sysctl."vm.max_map_count" = 2147483642;
+    # BBR 拥塞控制 + fq 队列,改善串流/远程访问的吞吐与延迟
+    kernel.sysctl."net.core.default_qdisc" = "fq";
+    kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
   };
 
   nix.gc = {
@@ -62,6 +71,8 @@
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
+    max-jobs = "auto"; # 并行构建多个 derivation
+    cores = 0;         # 每个构建用满所有 CPU 核心
     trusted-users = [ "root" "kud" ];
     substituters = [ "https://ezkea.cachix.org" ];
     trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
@@ -134,6 +145,7 @@
 
     # basic tools
     bluez
+    bubblewrap
 
     # basic dev
     kitty
@@ -181,8 +193,52 @@
       curl
       openssl
       libsecret
+
+      # Runtime libraries for npm-distributed Electron/Chromium binaries.
+      glib
+      nss
+      nspr
+      atk
+      at-spi2-core
+      cups
+      dbus
+      cairo
+      gtk3
+      pango
+      libx11
+      libxcb
+      libxcomposite
+      libxdamage
+      libxext
+      libxfixes
+      libxrandr
+      libxrender
+      libxkbcommon
+      libxshmfence
+      libgbm
+      mesa
+      libdrm
+      expat
+      systemd
+      alsa-lib
     ];
   };
+
+  # 游戏相关
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;            # Steam Remote Play
+    dedicatedServer.openFirewall = true;       # 本地专用服务器
+    localNetworkGameTransfers.openFirewall = true; # 局域网游戏传输
+    gamescopeSession.enable = true;            # gamescope 会话
+    extraCompatPackages = with pkgs; [ proton-ge-bin ]; # Proton-GE,ntsync 支持最佳
+  };
+
+  # 游戏时自动切 CPU performance 调度 / GPU 性能档,退出自动恢复
+  programs.gamemode.enable = true;
+
+  # Valve Wayland 微合成器(缩放/限帧/FSR/HDR)
+  programs.gamescope.enable = true;
 
   # 禁止系统自动休眠/挂起（远程访问时不被打断）
   services.displayManager.gdm.autoSuspend = false;

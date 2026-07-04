@@ -37,6 +37,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+    configType = "hyprlang";
 #     autoLogin = {
 #       enable = lib.mkDefault true;
 #       shell = lib.mkDefault "bash";

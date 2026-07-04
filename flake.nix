@@ -21,6 +21,8 @@
 
     k0s-nix.url = "github:johbo/k0s-nix";
     codex-cli-nix.url = "github:sadjow/codex-cli-nix";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
+    herdr.url = "github:ogulcancelik/herdr";
 
     berberman = {
       url = "github:berberman/flakes";

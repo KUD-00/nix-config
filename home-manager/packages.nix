@@ -16,6 +16,7 @@
   };
 
   home.packages = (with pkgs; [
+      godot
       yazi
       opencode
       termius
@@ -23,6 +24,7 @@
       gnome-monitor-config
       gnome-randr
       inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
       swaybg
       waypaper
       # neohtop
@@ -30,6 +32,7 @@
       tailscale
       yt-dlp-light
       ngrok
+      bubblewrap
 
 # for nvim
       luajitPackages.luarocks-nix
@@ -83,6 +86,7 @@
       gdb
       pango
       thttpd
+      sox
 
       zip
       xz
@@ -186,8 +190,10 @@
       eog
       gvfs
       # dconf-editor
-      happy-coder
       kiro-cli
       codex-switcher
+      grok-build
+      orca-ide
+      (writeShellScriptBin "codex-switch" (builtins.readFile ../scripts/codex-switch.sh))
   ]);
 }

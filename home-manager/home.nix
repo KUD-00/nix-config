@@ -67,21 +67,44 @@
 
   services.ssh-agent.enable = true;
 
+  # /nix/store is owned by nobody:nogroup on this setup, and OpenSSH refuses
+  # a ~/.ssh/config not owned by the user or root. Redirect the generated
+  # file to config_source and copy it into place as a real user-owned file.
+  home.file.".ssh/config" = {
+    target = ".ssh/config_source";
+    onChange = ''
+      rm -f ~/.ssh/config
+      cp ~/.ssh/config_source ~/.ssh/config
+      chmod 600 ~/.ssh/config
+    '';
+  };
+
   programs = {
     home-manager.enable = true;
 
     ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks."*".addKeysToAgent = "yes";
+      settings."*".addKeysToAgent = "yes";
     };
 
     git = {
       enable = true;
+      signing.format = "openpgp";
       settings = {
         user.name = "kud@nix";
         user.email = "kasa7qi@gmail.com";
         http.postBuffer = 524288000;
+        credential = {
+          "https://github.com".helper = [
+            ""
+            "!${pkgs.gh}/bin/gh auth git-credential"
+          ];
+          "https://gist.github.com".helper = [
+            ""
+            "!${pkgs.gh}/bin/gh auth git-credential"
+          ];
+        };
       };
     };
   };
