@@ -73,6 +73,14 @@
 
     upower.enable = true;
 
-    fwupd.enable = true; # a simple daemon allowing you to update some devices' firmware, including UEFI for several machines. 
+    fwupd.enable = true; # a simple daemon allowing you to update some devices' firmware, including UEFI for several machines.
+
+    # 记录历史系统负载(CPU/内存/IO), 用 `sar -u` 看 CPU、`sar -r` 看内存、`sar -d` 看磁盘。
+    # 数据存在 /var/log/sa/, 默认保留约一个月。
+    sysstat = {
+      enable = true;
+      collect-frequency = "*:00/5"; # 每 5 分钟采样一次
+      collect-args = "1 1 -S DISK"; # 顺便记录每块磁盘的 IO
+    };
   };
 }

@@ -21,6 +21,7 @@
 
     k0s-nix.url = "github:johbo/k0s-nix";
     codex-cli-nix.url = "github:sadjow/codex-cli-nix";
+    kimi-code.url = "github:MoonshotAI/kimi-code";
     hermes-agent.url = "github:NousResearch/hermes-agent";
     herdr.url = "github:ogulcancelik/herdr";
 

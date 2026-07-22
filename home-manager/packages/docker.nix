@@ -4,7 +4,7 @@
   home.packages = (with pkgs; [
     docker
     kubernetes
-    kubectl
+    (lib.hiPrio kubectl)
     kubectx
     kubernetes-helm
     minikube

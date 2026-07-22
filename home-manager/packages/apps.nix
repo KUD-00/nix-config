@@ -8,7 +8,7 @@
       obs-studio
       firefox
       google-chrome
-      pkgs-master.windsurf
+      pkgs-master.devin-desktop
       pkgs-master.code-cursor-fhs
       pkgs-master.claude-code
       affine
@@ -16,7 +16,7 @@
       variety
       lens
       # flacon
-      pkgs-master.antigravity-fhs
+      pkgs-master.antigravity-ide-fhs
       pkgs-master.warp-terminal
       # pkgs-master.kiro-fhs  # DNS resolution fails in Nix sandbox
   ]);

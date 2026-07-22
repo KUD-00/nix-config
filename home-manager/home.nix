@@ -22,7 +22,8 @@
     ./theme.nix
     ./rofi.nix
     ./scripts.nix
-    ./vscode-tunnel.nix
+    # Disabled for security: remote tunnel expands attack surface.
+    # ./vscode-tunnel.nix
   ];
 
   nixpkgs = {
